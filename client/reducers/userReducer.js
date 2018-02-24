@@ -31,7 +31,11 @@ const userReducer = (state = initialState, action) => {
     case actions.USER_GET_ACCOUNT_SUCCESS:
       return {
         ...state,
-        account: action.payload,
+        account: {
+          firstName: action.payload[0],
+          lastName: action.payload[1],
+          email: action.payload[3],
+        },
         accountLoading: false,
       }
 

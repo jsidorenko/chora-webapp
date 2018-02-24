@@ -7,7 +7,7 @@ import { choraTech } from '../contracts'
 export const getAccount = () => ({
   type: actions.USER_GET_ACCOUNT,
   payload: choraTech.then(instance => {
-    return web3.eth.accounts[0]
+    return instance.getAccount()
   }).then(response => {
     store.dispatch(getAccountSuccess(response))
   }).catch(error => {

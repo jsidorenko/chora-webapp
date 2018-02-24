@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "webpack -p",
     "start": "webpack-dev-server",
     "test": "truffle test"
   },

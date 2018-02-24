@@ -1,0 +1,26 @@
+import store from '../index'
+import * as actions from '../constants/actions'
+import { choraTech } from '../contracts'
+
+// getAccount
+
+export const getAccount = () => ({
+  type: actions.USER_GET_ACCOUNT,
+  payload: choraTech.then(instance => {
+    return web3.eth.accounts[0]
+  }).then(response => {
+    store.dispatch(getAccountSuccess(response))
+  }).catch(error => {
+    store.dispatch(getAccountError(error))
+  }),
+})
+
+export const getAccountError = (error) => ({
+  type: actions.USER_GET_ACCOUNT_ERROR,
+  payload: error,
+})
+
+export const getAccountSuccess = (response) => ({
+  type: actions.USER_GET_ACCOUNT_SUCCESS,
+  payload: response,
+})

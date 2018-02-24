@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getAccount } from '../actions/userActions'
-import { getInstance } from '../actions/appActions'
+import { drizzleConnect } from 'drizzle-react'
 import App from '../components/App'
+import AppLoading from '../components/AppLoading'
 
 class AppContainer extends Component {
 
@@ -10,20 +9,18 @@ class AppContainer extends Component {
     super(props)
   }
 
-  componentDidMount() {
-    this.props.getAccount()
-    this.props.getInstance()
+  componentDidUpdate() {
+    // console.log('accounts:', this.props.accounts)
+    // console.log('contracts:', this.props.contracts)
+    // console.log('drizzleStatus:', this.props.drizzleStatus)
+    // console.log('transactionStack:', this.props.transactionStack)
+    // console.log('transactions:', this.props.transactions)
+    // console.log('web3:', this.props.web3)
   }
 
   render() {
-    if (this.props.loading) {
-      return <p>Loading...</p>
-    }
-    if (!this.props.account) {
-      return <p>You are not connected.</p>
-    }
-    if (!this.props.instance) {
-      return <p>This application is not deployed on the connected network.</p>
+    if (!this.props.drizzleStatus.initialized && this.props.web3.status !== "initialized") {
+      return <AppLoading />
     }
     return <App />
   }
@@ -31,18 +28,12 @@ class AppContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  account: state.user.account,
-  instance: state.app.instance,
-  loading: state.user.accountLoading || state.app.instanceLoading,
+  // accounts: state.accounts,
+  // contracts: state.contracts,
+  drizzleStatus: state.drizzleStatus,
+  // transactionStack: state.transactionStack,
+  // transactions: state.transactions,
+  web3: state.web3,
 })
 
-const mapDispatchToProps = dispatch => ({
-  getAccount() {
-    dispatch(getAccount())
-  },
-  getInstance() {
-    dispatch(getInstance())
-  },
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+export default drizzleConnect(AppContainer, mapStateToProps)

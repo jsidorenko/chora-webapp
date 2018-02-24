@@ -1,15 +1,14 @@
 .header {
-  box-shadow: 0 0 1px #CCC;
+  box-shadow: 0 0 2px #3C9;
   padding: 2rem;
-  text-align: center;
 }
 
 .title {
+  display: inline-block;
   margin: 0 auto;
-  width: 600px;
-}
 
-.address {
-  font-size: 0.8rem;
-  font-weight: 300;
+  img {
+    width: 300px;
+  }
+
 }

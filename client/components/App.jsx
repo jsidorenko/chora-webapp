@@ -1,12 +1,14 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Footer from './Footer'
-import Header from '../containers/Header'
+import Header from './Header'
+import Home from './Home'
 import styles from './App.scss'
 
-const App = ({ address }) => (
+const App = () => (
   <div className={styles.container}>
     <Header />
+    <Home />
     <Footer />
   </div>
 )

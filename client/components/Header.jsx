@@ -1,10 +1,13 @@
 import React from 'react'
+import User from '../containers/User'
 import styles from './Header.scss'
 
-const Header = ({ address }) => (
+const Header = () => (
   <header className={styles.header}>
-    <img className={styles.title} src="img/title.png" />
-    <h2 className={styles.address}>{address}</h2>
+    <div className={styles.title}>
+      <img src="img/title.png" />
+    </div>
+    <User />
   </header>
 )
 

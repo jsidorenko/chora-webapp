@@ -1,7 +1,22 @@
 .container {
   margin: 0 auto;
+  min-height: calc(100vh - 144px);
   padding: 2rem;
   width: 900px;
+}
+
+.background {
+  height: 100vh;
+  left: 0;
+  opacity: 0.05;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+
+  img {
+    width: 100%;
+  }
 }
 
 .content {

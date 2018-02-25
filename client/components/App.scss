@@ -1,4 +1,17 @@
 .container {
+  animation: fade 0.5s linear;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
+}
+
+@keyframes fade {
+
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
 }

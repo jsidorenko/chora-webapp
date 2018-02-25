@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from './Home.scss'
+import styles from './Account.scss'
 
-const Home = () => (
+const Account = () => (
   <div className={styles.container}>
     <div className={styles.content}>
-      <h1>{'Welcome'}</h1>
+      <h1>{'Account'}</h1>
     </div>
   </div>
 )
 
-export default Home
+export default Account

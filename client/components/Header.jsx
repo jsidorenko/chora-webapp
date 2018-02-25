@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Menu from './Menu'
 import User from '../containers/User'
 import styles from './Header.scss'
 
@@ -8,6 +9,7 @@ const Header = () => (
     <NavLink className={styles.title} to="/">
       <img src="img/title_medium.png" />
     </NavLink>
+    <Menu />
     <User />
   </header>
 )

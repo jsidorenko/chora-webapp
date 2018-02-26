@@ -1,6 +1,6 @@
-# choratech-webapp
+# choratech
 
-choratech client application
+choratech web application
 
 ## Technology Stack
 

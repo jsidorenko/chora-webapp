@@ -8,7 +8,7 @@ const accountContract = contract(Account)
 accountContract.setProvider(web3.currentProvider)
 
 // set instance for contract(s)
-const account = accountContract.deployed()
+const account = accountContract.at('0xc54519acd0f8335f1e3ecb2d38261f662155ad78') // rinkeby deployment
 
 // export contract instance(s)
 export { account }

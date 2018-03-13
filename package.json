@@ -1,8 +1,9 @@
 {
+  "name": "choratech-web",
+  "version": "0.0.0",
   "scripts": {
     "build": "webpack -p",
-    "start": "webpack-dev-server",
-    "test": "truffle test"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "autoprefixer": "^8.0.0",

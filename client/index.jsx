@@ -7,7 +7,7 @@ import router from './router'
 import './index.scss'
 
 // Contracts
-import ChoraTech from '../build/contracts/ChoraTech.json'
+import Account from '../contracts/Account.json'
 
 // Drizzle Options
 const options = {
@@ -19,10 +19,10 @@ const options = {
     }
   },
   contracts: [
-    ChoraTech,
+    Account,
   ],
   events: {
-    ChoraTech: ['AccountNameSet']
+    Account: ['AccountUpdate']
   }
 }
 

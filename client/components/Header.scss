@@ -1,18 +1,20 @@
 .header {
   align-items: center;
-  background: #FFF;
-  box-shadow: 0 0 2px #3C9;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   display: flex;
+  justify-content: center;
   min-height: 80px;
-  padding: 2rem;
 }
 
 .title {
   display: inline-block;
   margin: 0 auto;
+  width: 200px;
+}
 
-  img {
-    width: 300px;
-  }
-
+.status {
+  display: inline-block;
+  margin: 0 auto;
+  width: 200px;
 }

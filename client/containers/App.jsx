@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { drizzleConnect } from 'drizzle-react'
 import App from '../components/App'
-import AppLoading from '../components/AppLoading'
+import Loading from '../components/Loading'
 
 class AppContainer extends Component {
 
@@ -12,15 +12,15 @@ class AppContainer extends Component {
   componentDidUpdate() {
     // console.log('accounts:', this.props.accounts)
     // console.log('contracts:', this.props.contracts)
-    // console.log('drizzleStatus:', this.props.drizzleStatus)
+    console.log('drizzleStatus:', this.props.drizzleStatus)
     // console.log('transactionStack:', this.props.transactionStack)
     // console.log('transactions:', this.props.transactions)
-    // console.log('web3:', this.props.web3)
+    console.log('web3:', this.props.web3)
   }
 
   render() {
     if (!this.props.drizzleStatus.initialized && this.props.web3.status !== "initialized") {
-      return <AppLoading />
+      return <Loading />
     }
     return <App />
   }

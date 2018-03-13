@@ -1,12 +1,12 @@
 import store from '../index'
 import * as actions from '../constants/actions'
-import { choraTech } from '../contracts'
+import { account } from '../contracts'
 
 // getAccount
 
 export const getAccount = () => ({
   type: actions.USER_GET_ACCOUNT,
-  payload: choraTech.then(instance => {
+  payload: account.then(instance => {
     return instance.getAccount()
   }).then(response => {
     store.dispatch(getAccountSuccess(response))

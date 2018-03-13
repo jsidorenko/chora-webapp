@@ -1,14 +1,14 @@
 import contract from 'truffle-contract'
-import ChoraTech from '../build/contracts/ChoraTech.json'
+import Account from '../contracts/Account.json'
 
 // set contract(s)
-const choraTechContract = contract(ChoraTech)
+const accountContract = contract(Account)
 
 // set provider for contract(s)
-choraTechContract.setProvider(web3.currentProvider)
+accountContract.setProvider(web3.currentProvider)
 
 // set instance for contract(s)
-const choraTech = choraTechContract.deployed()
+const account = accountContract.deployed()
 
 // export contract instance(s)
-export { choraTech }
+export { account }

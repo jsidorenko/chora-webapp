@@ -1,16 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import Menu from './Menu'
-import User from '../containers/User'
 import styles from './Header.scss'
 
-const Header = () => (
+const Header = ({ account, accountError, accountLoading }) => (
   <header className={styles.header}>
-    <NavLink className={styles.title} to="/">
-      <img src="img/title_medium.png" />
-    </NavLink>
-    <Menu />
-    <User />
+    <img
+      className={styles.title}
+      src="img/title_medium.png"
+    />
+    <div className={styles.status}>
+      {accountLoading ? 'Loading...' : accountError ? accountError : (account ? 'Connected' : 'Disconnected')}
+    </div>
   </header>
 )
 

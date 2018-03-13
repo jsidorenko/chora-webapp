@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import styles from './AppLoading.scss'
+import styles from './Loading.scss'
 
-const AppLoading = () => (
+const Loading = () => (
   <div className={styles.container}>
     <div className={styles.loader} />
   </div>
 )
 
-export default AppLoading
+export default Loading

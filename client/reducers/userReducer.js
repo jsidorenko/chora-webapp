@@ -4,7 +4,7 @@ const initialState = {
 
   // account
   account: null,
-  accountError: true,
+  accountError: null,
   accountLoading: true,
 
 }

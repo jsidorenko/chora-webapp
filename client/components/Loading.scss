@@ -1,3 +1,5 @@
+@import '../stylesheets/animations.scss';
+
 .container {
   height: 100vh;
   text-align: center;
@@ -5,7 +7,7 @@
 }
 
 .loader {
-  animation: fade 1s linear infinite;
+  animation: spinnerFade 1s linear infinite;
   left: 50%;
   margin-left: -50px;
   margin-top: -100px;
@@ -20,35 +22,11 @@
   }
 
   &:after {
-    animation: spin 1s linear infinite;
+    animation: spinnerSpin 1s linear infinite;
     border: 15px solid transparent;
     border-top-color: #39C;
     border-bottom-color: #3C9;
     position: absolute;
   }
 
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg) scale(1)
-  }
-  50% {
-    transform: rotate(135deg) scale(1.2)
-  }
-  100% {
-    transform: rotate(360deg) scale(1)
-  }
 }

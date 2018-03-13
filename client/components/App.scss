@@ -1,31 +1,7 @@
+@import '../stylesheets/animations.scss';
+
 .container {
-  animation: fade 0.5s linear;
+  animation: appFadeIn 0.5s linear;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
-}
-
-.background {
-  height: 100vh;
-  left: 0;
-  opacity: 0.05;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: -1;
-
-  img {
-    width: 100%;
-  }
-}
-
-@keyframes fade {
-
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-
 }

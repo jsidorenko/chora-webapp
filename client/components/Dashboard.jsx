@@ -1,9 +1,9 @@
 import React from 'react'
-import AccountInfo from './Account/AccountInfo'
-import Organizations from './Account/Organizations'
-import styles from './Account.scss'
+import Account from './Dashboard/Account'
+import Organizations from './Dashboard/Organizations'
+import styles from './Dashboard.scss'
 
-const Account = ({
+const Dashboard = ({
   account,
   accountAddress,
   createOrganization,
@@ -13,7 +13,7 @@ const Account = ({
 }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
-      <AccountInfo
+      <Account
         account={account}
         accountAddress={accountAddress}
       />
@@ -27,4 +27,4 @@ const Account = ({
   </div>
 )
 
-export default Account
+export default Dashboard

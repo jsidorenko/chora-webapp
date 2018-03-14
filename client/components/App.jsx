@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './Header'
-import Account from '../containers/Account'
+import Dashboard from '../containers/Dashboard'
 import Organization from '../containers/Organization'
 import Organizations from '../containers/Organizations'
 import styles from './App.scss'
@@ -11,7 +11,7 @@ const App = ({ accountAddress }) => (
     <Header />
     <Switch>
       <Route path="/" exact render={() => (
-        <Account
+        <Dashboard
           accountAddress={accountAddress}
         />
       )} />

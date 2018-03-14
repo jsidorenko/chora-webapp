@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAccountOrganizations } from '../actions/accountActions'
-import Account from '../components/Account'
+import Dashboard from '../components/Dashboard'
 import Loading from '../components/Loading'
 
-class AccountContainer extends Component {
+class DashboardContainer extends Component {
 
   constructor(props) {
     super(props)
@@ -25,7 +25,7 @@ class AccountContainer extends Component {
       return <Loading />
     }
     return (
-      <Account
+      <Dashboard
         account={this.props.account}
         accountAddress={this.props.accountAddress}
         organization={this.props.organization}
@@ -53,4 +53,4 @@ const mapDispatchToProps = dispatch => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)

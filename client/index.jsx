@@ -7,9 +7,9 @@ import router from './router'
 import './index.scss'
 
 // Contracts
-import Account from '../contracts/Account.json'
-import Factory from '../contracts/Factory.json'
-import Organization from '../contracts/Organization.json'
+import Account from '../build/contracts/Account.json'
+import Factory from '../build/contracts/Factory.json'
+import Organization from '../build/contracts/Organization.json'
 
 // Drizzle Options
 const options = {

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import factoryReducer from './reducers/factoryReducer'
+import organizationsReducer from './reducers/organizationsReducer'
 import organizationReducer from './reducers/organizationReducer'
 import userReducer from './reducers/userReducer'
 
 const reducers = combineReducers({
-  factory: factoryReducer,
+  organizations: organizationsReducer,
   organization: organizationReducer,
   user: userReducer
 })

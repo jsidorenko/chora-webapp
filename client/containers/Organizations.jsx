@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createOrganization, getOrganizations } from '../actions/factoryActions'
+import { createOrganization, getOrganizations } from '../actions/organizationsActions'
 import Organizations from '../components/Organizations'
 import Loading from '../components/Loading'
 
@@ -47,9 +47,9 @@ class OrganizationsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  organizations: state.factory.organizations,
-  organizationsError: state.factory.organizationsError,
-  organizationsLoading: state.factory.organizationsLoading,
+  organizations: state.organizations.organizations,
+  organizationsError: state.organizations.organizationsError,
+  organizationsLoading: state.organizations.organizationsLoading,
 })
 
 

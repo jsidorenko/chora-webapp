@@ -1,12 +1,12 @@
 import store from '../index'
 import * as actions from '../constants/actions'
-import { factory } from '../contracts'
+import { organizations } from '../contracts'
 
 // createOrganization
 
 export const createOrganization = (name, owner) => ({
-  type: actions.FACTORY_CREATE_ORGANIZATION,
-  payload: factory.deployed().then(instance => {
+  type: actions.ORGANIZATIONS_CREATE_ORGANIZATION,
+  payload: organizations.deployed().then(instance => {
     return instance.createOrganization(name, owner, { from: owner })
   }).then(response => {
     store.dispatch(createOrganizationSuccess(response))
@@ -16,20 +16,20 @@ export const createOrganization = (name, owner) => ({
 })
 
 export const createOrganizationError = (error) => ({
-  type: actions.FACTORY_CREATE_ORGANIZATION_ERROR,
+  type: actions.ORGANIZATIONS_CREATE_ORGANIZATION_ERROR,
   payload: error,
 })
 
 export const createOrganizationSuccess = (response) => ({
-  type: actions.FACTORY_CREATE_ORGANIZATION_SUCCESS,
+  type: actions.ORGANIZATIONS_CREATE_ORGANIZATION_SUCCESS,
   payload: response,
 })
 
 // getOrganizations
 
 export const getOrganizations = (address) => ({
-  type: actions.FACTORY_GET_ORGANIZATIONS,
-  payload: factory.deployed().then(instance => {
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS,
+  payload: organizations.deployed().then(instance => {
     return instance.getOrganizations(address)
   }).then(response => {
     store.dispatch(getOrganizationsSuccess(response))
@@ -39,11 +39,11 @@ export const getOrganizations = (address) => ({
 })
 
 export const getOrganizationsError = (error) => ({
-  type: actions.FACTORY_GET_ORGANIZATIONS_ERROR,
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_ERROR,
   payload: error,
 })
 
 export const getOrganizationsSuccess = (response) => ({
-  type: actions.FACTORY_GET_ORGANIZATIONS_SUCCESS,
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_SUCCESS,
   payload: response,
 })

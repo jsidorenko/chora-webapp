@@ -10,12 +10,12 @@ const initialState = {
 
 }
 
-const factoryReducer = (state = initialState, action) => {
+const organizationsReducer = (state = initialState, action) => {
   switch (action.type) {
 
     // createOrganization
 
-    case actions.FACTORY_CREATE_ORGANIZATION:
+    case actions.ORGANIZATIONS_CREATE_ORGANIZATION:
       return {
         ...state,
         organizationsError: null,
@@ -23,14 +23,14 @@ const factoryReducer = (state = initialState, action) => {
         organizationsSuccess: false,
       }
 
-    case actions.FACTORY_CREATE_ORGANIZATION_ERROR:
+    case actions.ORGANIZATIONS_CREATE_ORGANIZATION_ERROR:
       return {
         ...state,
         organizationsError: action.payload,
         organizationsLoading: false,
       }
 
-    case actions.FACTORY_CREATE_ORGANIZATION_SUCCESS:
+    case actions.ORGANIZATIONS_CREATE_ORGANIZATION_SUCCESS:
       return {
         ...state,
         organizationsLoading: false,
@@ -39,21 +39,21 @@ const factoryReducer = (state = initialState, action) => {
 
     // getOrganizations
 
-    case actions.FACTORY_GET_ORGANIZATIONS:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS:
       return {
         ...state,
         organizationsError: null,
         organizationsLoading: true,
       }
 
-    case actions.FACTORY_GET_ORGANIZATIONS_ERROR:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_ERROR:
       return {
         ...state,
         organizationsError: action.payload,
         organizationsLoading: false,
       }
 
-    case actions.FACTORY_GET_ORGANIZATIONS_SUCCESS:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_SUCCESS:
       return {
         ...state,
         organizations: action.payload,
@@ -66,4 +66,4 @@ const factoryReducer = (state = initialState, action) => {
   }
 }
 
-export default factoryReducer
+export default organizationsReducer

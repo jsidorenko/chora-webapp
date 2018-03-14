@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOrganization, setOrganization } from '../actions/organizationActions'
-import Dashboard from '../components/Dashboard'
+import { getAccountOrganizations } from '../actions/accountActions'
+import Account from '../components/Account'
 import Loading from '../components/Loading'
 
-class DashboardContainer extends Component {
+class AccountContainer extends Component {
 
   constructor(props) {
     super(props)
     this.selectOrganiztion = this.selectOrganiztion.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.getAccountOrganizations(this.props.accountAddress)
   }
 
   selectOrganiztion(address) {
@@ -21,7 +25,7 @@ class DashboardContainer extends Component {
       return <Loading />
     }
     return (
-      <Dashboard
+      <Account
         account={this.props.account}
         accountAddress={this.props.accountAddress}
         organization={this.props.organization}
@@ -34,23 +38,19 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  account: state.user.account,
-  accountError: state.user.accountError,
-  accountLoading: state.user.accountLoading,
+  account: state.account.account,
+  accountError: state.account.accountError,
+  accountLoading: state.account.accountLoading,
   organization: state.organization.organization,
   organizationError: state.organization.organizationError,
   organizationLoading: state.organization.organizationLoading,
   selectedOrganization: state.organization.selectedOrganization,
 })
 
-
 const mapDispatchToProps = dispatch => ({
-  getOrganization(address) {
-    dispatch(getOrganization(address))
-  },
-  setOrganization(address) {
-    dispatch(setOrganization(address))
+  getAccountOrganizations(account) {
+    dispatch(getAccountOrganizations(account))
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AccountContainer)

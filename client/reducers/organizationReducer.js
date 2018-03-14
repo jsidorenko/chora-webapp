@@ -2,9 +2,6 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
-  // selectedOrganization
-  selectedOrganization: null,
-
   // organization
   organization: null,
   organizationError: null,
@@ -40,25 +37,6 @@ const organizationReducer = (state = initialState, action) => {
           members: action.payload[2],
         },
         organizationLoading: false,
-      }
-
-    // resetOrganization
-
-    case actions.ORGANIZATION_RESET_ORGANIZATION:
-      return {
-        ...state,
-        selectedOrganization: null,
-        organization: null,
-        organizationError: null,
-        organizationLoading: true,
-      }
-
-    // setOrganization
-
-    case actions.ORGANIZATION_SET_ORGANIZATION:
-      return {
-        ...state,
-        selectedOrganization: action.payload,
       }
 
     default:

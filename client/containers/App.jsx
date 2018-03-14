@@ -19,7 +19,7 @@ class AppContainer extends Component {
   }
 
   render() {
-    if (!this.props.drizzleStatus.initialized && this.props.web3.status !== 'initialized') {
+    if (!this.props.accounts[0]) {
       return <Loading />
     }
     return (
@@ -34,10 +34,10 @@ class AppContainer extends Component {
 const mapStateToProps = state => ({
   accounts: state.accounts,
   // contracts: state.contracts,
-  drizzleStatus: state.drizzleStatus,
+  // drizzleStatus: state.drizzleStatus,
   // transactionStack: state.transactionStack,
   // transactions: state.transactions,
-  web3: state.web3,
+  // web3: state.web3,
 })
 
 export default drizzleConnect(AppContainer, mapStateToProps)

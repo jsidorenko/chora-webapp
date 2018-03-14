@@ -16,6 +16,12 @@ const Sidebar = ({ account, accountError, accountLoading }) => (
       <li>
         Members
       </li>
+      <li>
+        Token
+      </li>
+      <li>
+        Transactions
+      </li>
     </ul>
   </div>
 )

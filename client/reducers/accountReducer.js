@@ -12,28 +12,27 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    // getAccount
+    // getAccountOrganizations
 
-    case actions.USER_GET_ACCOUNT:
+    case actions.ACCOUNT_GET_ORGANIZATIONS:
       return {
         ...state,
         accountError: null,
         accountLoading: true,
       }
 
-    case actions.USER_GET_ACCOUNT_ERROR:
+    case actions.ACCOUNT_GET_ORGANIZATIONS_ERROR:
       return {
         ...state,
         accountError: action.payload,
         accountLoading: false,
       }
 
-    case actions.USER_GET_ACCOUNT_SUCCESS:
+    case actions.ACCOUNT_GET_ORGANIZATIONS_SUCCESS:
       return {
         ...state,
         account: {
-          address: '[address]',
-          organizations: ['[address 1]', '[address 2]', '[address 3]'],
+          organizations: action.payload,
         },
         accountLoading: false,
       }

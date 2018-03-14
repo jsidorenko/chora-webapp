@@ -1,19 +1,20 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './Header.scss'
 
-const Header = ({ account, accountError, accountLoading, resetOrganization }) => (
+const Header = () => (
   <header className={styles.header}>
     <img
       className={styles.title}
       src="img/title_medium.png"
     />
     <div className={styles.controls}>
-      <div className={styles.status}>
-        {accountLoading ? 'Loading...' : (accountError ? accountError : (account ? 'Connected' : 'Disconnected'))}
-      </div>
-      <button className={styles.button} onClick={resetOrganization}>
+      <NavLink className={styles.button} to="/">
         {'Dashboard'}
-      </button>
+      </NavLink>
+      <NavLink className={styles.button} to="/organizations">
+        {'Organizations'}
+      </NavLink>
     </div>
   </header>
 )

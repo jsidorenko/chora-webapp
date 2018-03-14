@@ -37,7 +37,7 @@ const organizationsReducer = (state = initialState, action) => {
         organizationsSuccess: action.payload,
       }
 
-    // getOrganizations
+    // getAccountOrganizations
 
     case actions.ORGANIZATIONS_GET_ORGANIZATIONS:
       return {

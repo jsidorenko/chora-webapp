@@ -1,0 +1,24 @@
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+
+  h2 {
+    padding-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+}
+
+.organization {
+  padding-bottom: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}

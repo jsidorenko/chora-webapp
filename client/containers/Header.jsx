@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAccount } from '../actions/userActions'
+import { resetOrganization } from '../actions/organizationActions'
 import Header from '../components/Header'
 
 class HeaderContainer extends Component {
@@ -19,6 +20,7 @@ class HeaderContainer extends Component {
         account={this.props.account}
         accountError={this.props.accountError}
         accountLoading={this.props.accountLoading}
+        resetOrganization={this.props.resetOrganization}
       />
     )
   }
@@ -28,6 +30,9 @@ class HeaderContainer extends Component {
 const mapDispatchToProps = dispatch => ({
   getAccount() {
     dispatch(getAccount())
+  },
+  resetOrganization() {
+    dispatch(resetOrganization())
   },
 })
 

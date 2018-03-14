@@ -8,6 +8,7 @@ import './index.scss'
 
 // Contracts
 import Account from '../contracts/Account.json'
+import Organization from '../contracts/Organization.json'
 
 // Drizzle Options
 const options = {
@@ -20,9 +21,11 @@ const options = {
   },
   contracts: [
     Account,
+    Organization,
   ],
   events: {
-    Account: ['AccountUpdate']
+    Account: ['AccountUpdate'],
+    Organization: ['OrganizationUpdate']
   }
 }
 

@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 
 let middleware = [thunk]
 
-if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   middleware = [...middleware, createLogger()]
 }
 

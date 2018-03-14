@@ -1,11 +1,21 @@
-body {
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body:hover {
+body {
   cursor: default;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 300;
+  outline: none;
 }

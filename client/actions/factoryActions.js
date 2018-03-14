@@ -7,7 +7,7 @@ import { factory } from '../contracts'
 export const createOrganization = (name, owner) => ({
   type: actions.FACTORY_CREATE_ORGANIZATION,
   payload: factory.then(instance => {
-    return instance.createOrganization(name, owner)
+    return instance.createOrganization(name, owner, { from: owner })
   }).then(response => {
     store.dispatch(createOrganizationSuccess(response))
   }).catch(error => {

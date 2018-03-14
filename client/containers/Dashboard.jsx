@@ -23,6 +23,8 @@ class DashboardContainer extends Component {
     return (
       <Dashboard
         account={this.props.account}
+        accountAddress={this.props.accountAddress}
+        organization={this.props.organization}
         selectOrganiztion={this.selectOrganiztion}
         selectedOrganization={this.props.selectedOrganization}
       />
@@ -35,6 +37,9 @@ const mapStateToProps = state => ({
   account: state.user.account,
   accountError: state.user.accountError,
   accountLoading: state.user.accountLoading,
+  organization: state.organization.organization,
+  organizationError: state.organization.organizationError,
+  organizationLoading: state.organization.organizationLoading,
   selectedOrganization: state.organization.selectedOrganization,
 })
 

@@ -34,7 +34,11 @@ const organizationReducer = (state = initialState, action) => {
     case actions.ORGANIZATION_GET_ORGANIZATION_SUCCESS:
       return {
         ...state,
-        organization: action.payload,
+        organization: {
+          name: action.payload[0],
+          owner: action.payload[1],
+          members: action.payload[2],
+        },
         organizationLoading: false,
       }
 

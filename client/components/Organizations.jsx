@@ -1,7 +1,13 @@
 import React from 'react'
 import styles from './Organizations.scss'
 
-const Organizations = ({ organizations, selectOrganiztion }) => (
+const Organizations = ({
+  createOrganization,
+  handleName,
+  name,
+  organizations,
+  selectOrganiztion,
+}) => (
   <div className={styles.container}>
     <h2>Organizations</h2>
     <ul>
@@ -13,6 +19,14 @@ const Organizations = ({ organizations, selectOrganiztion }) => (
         </li>
       ))}
     </ul>
+    <input
+      className={styles.input}
+      onChange={handleName}
+      value={name}
+    />
+    <button className={styles.button} onClick={createOrganization}>
+      {'Create Organization'}
+    </button>
   </div>
 )
 

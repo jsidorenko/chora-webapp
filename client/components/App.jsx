@@ -3,10 +3,12 @@ import Header from '../containers/Header'
 import Dashboard from '../containers/Dashboard'
 import styles from './App.scss'
 
-const App = () => (
+const App = ({ accountAddress }) => (
   <div className={styles.container}>
     <Header />
-    <Dashboard />
+    <Dashboard
+      accountAddress={accountAddress}
+    />
   </div>
 )
 

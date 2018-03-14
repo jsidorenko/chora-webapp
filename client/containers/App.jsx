@@ -12,23 +12,27 @@ class AppContainer extends Component {
   componentDidUpdate() {
     // console.log('accounts:', this.props.accounts)
     // console.log('contracts:', this.props.contracts)
-    console.log('drizzleStatus:', this.props.drizzleStatus)
+    // console.log('drizzleStatus:', this.props.drizzleStatus)
     // console.log('transactionStack:', this.props.transactionStack)
     // console.log('transactions:', this.props.transactions)
-    console.log('web3:', this.props.web3)
+    // console.log('web3:', this.props.web3)
   }
 
   render() {
-    if (!this.props.drizzleStatus.initialized && this.props.web3.status !== "initialized") {
+    if (!this.props.drizzleStatus.initialized && this.props.web3.status !== 'initialized') {
       return <Loading />
     }
-    return <App />
+    return (
+      <App
+        accountAddress={this.props.accounts[0]}
+      />
+    )
   }
 
 }
 
 const mapStateToProps = state => ({
-  // accounts: state.accounts,
+  accounts: state.accounts,
   // contracts: state.contracts,
   drizzleStatus: state.drizzleStatus,
   // transactionStack: state.transactionStack,

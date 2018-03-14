@@ -32,9 +32,8 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         account: {
-          firstName: action.payload[0],
-          lastName: action.payload[1],
-          email: action.payload[3],
+          address: '[address]',
+          organizations: ['[address 1]', '[address 2]', '[address 3]'],
         },
         accountLoading: false,
       }

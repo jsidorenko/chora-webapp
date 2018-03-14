@@ -6,7 +6,7 @@ import { factory } from '../contracts'
 
 export const createOrganization = (name, owner) => ({
   type: actions.FACTORY_CREATE_ORGANIZATION,
-  payload: factory.then(instance => {
+  payload: factory.deployed().then(instance => {
     return instance.createOrganization(name, owner, { from: owner })
   }).then(response => {
     store.dispatch(createOrganizationSuccess(response))
@@ -29,7 +29,7 @@ export const createOrganizationSuccess = (response) => ({
 
 export const getOrganizations = (address) => ({
   type: actions.FACTORY_GET_ORGANIZATIONS,
-  payload: factory.then(instance => {
+  payload: factory.deployed().then(instance => {
     return instance.getOrganizations(address)
   }).then(response => {
     store.dispatch(getOrganizationsSuccess(response))

@@ -4,19 +4,14 @@ import Factory from '../build/contracts/Factory.json'
 import Organization from '../build/contracts/Organization.json'
 
 // set contract(s)
-const accountContract = contract(Account)
-const factoryContract = contract(Factory)
-const organizationContract = contract(Organization)
+const account = contract(Account)
+const factory = contract(Factory)
+const organization = contract(Organization)
 
 // set provider for contract(s)
-accountContract.setProvider(web3.currentProvider)
-factoryContract.setProvider(web3.currentProvider)
-organizationContract.setProvider(web3.currentProvider)
-
-// set instance for contract(s)
-const account = accountContract.deployed()
-const factory = factoryContract.deployed()
-const organization = organizationContract
+account.setProvider(web3.currentProvider)
+factory.setProvider(web3.currentProvider)
+organization.setProvider(web3.currentProvider)
 
 // export contract instance(s)
 export { account, factory, organization }

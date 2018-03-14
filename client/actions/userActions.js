@@ -1,13 +1,13 @@
 import store from '../index'
 import * as actions from '../constants/actions'
-import { account } from '../contracts'
+import { organizations } from '../contracts'
 
 // getAccount
 
-export const getAccount = () => ({
+export const getAccount = (account) => ({
   type: actions.USER_GET_ACCOUNT,
-  payload: account.deployed().then(instance => {
-    return instance.getAccountOrganizations()
+  payload: organizations.deployed().then(instance => {
+    return instance.getAccountOrganizations(account)
   }).then(response => {
     store.dispatch(getAccountSuccess(response))
   }).catch(error => {

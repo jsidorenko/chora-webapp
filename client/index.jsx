@@ -7,9 +7,8 @@ import router from './router'
 import './index.scss'
 
 // Contracts
-import Account from '../build/contracts/Account.json'
-import Organizations from '../build/contracts/Organizations.json'
 import Organization from '../build/contracts/Organization.json'
+import Organizations from '../build/contracts/Organizations.json'
 
 // Drizzle Options
 const options = {
@@ -17,18 +16,17 @@ const options = {
     block: false,
     fallback: {
       type: 'ws',
-      url: 'ws://127.0.0.1:9545'
-    }
+      url: 'ws://127.0.0.1:9545',
+    },
   },
   contracts: [
-    Account,
-    Organizations,
     Organization,
+    Organizations,
   ],
   events: {
-    Account: ['AccountUpdate'],
-    Organization: ['OrganizationUpdate']
-  }
+    Organization: ['OrganizationUpdate'],
+    Organizations: ['OrganizationsUpdate'],
+  },
 }
 
 const store = configureStore()

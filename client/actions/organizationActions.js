@@ -6,8 +6,8 @@ import { organization } from '../contracts'
 
 export const getOrganization = (address) => ({
   type: actions.ORGANIZATION_GET_ORGANIZATION,
-  payload: organization.then(instance => {
-    return instance.getOrganization(address)
+  payload: organization.at(address).then(instance => {
+    return instance.getOrganization()
   }).then(response => {
     store.dispatch(getOrganizationSuccess(response))
   }).catch(error => {

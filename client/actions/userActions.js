@@ -7,7 +7,7 @@ import { account } from '../contracts'
 export const getAccount = () => ({
   type: actions.USER_GET_ACCOUNT,
   payload: account.then(instance => {
-    return instance.getAccount()
+    return instance.getAccountOrganizations()
   }).then(response => {
     store.dispatch(getAccountSuccess(response))
   }).catch(error => {

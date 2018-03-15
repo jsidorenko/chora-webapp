@@ -1,26 +1,57 @@
 import React from 'react'
+import Members from './Organization/Members'
+import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
+import Tasks from './Organization/Tasks'
+import Token from './Organization/Token'
+import Transactions from './Organization/Transactions'
+import Voting from './Organization/Voting'
 import styles from './Organization.scss'
 
-const Organization = ({ address, organization }) => (
+const Organization = ({ address, currentView, organization, setCurrentView }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Sidebar
+        currentView={currentView}
         organization={organization}
+        setCurrentView={setCurrentView}
       />
-      <div className={styles.content}>
-        <p>name: {organization.name}</p>
-        <p>address: {address}</p>
-        <p>owner: {organization.owner}</p>
-        <p>members:</p>
-        <ul>
-          {organization.members.map(member => (
-            <li key={member}>
-              {member}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {currentView === 'overview' &&
+        <Overview
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'tasks' &&
+        <Tasks
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'voting' &&
+        <Voting
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'members' &&
+        <Members
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'token' &&
+        <Token
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'transactions' &&
+        <Transactions
+          address={address}
+          organization={organization}
+        />
+      }
     </div>
   </div>
 )

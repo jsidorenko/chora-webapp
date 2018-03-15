@@ -8,17 +8,24 @@
 }
 
 .list {
+  list-style: none;
   width: 100%;
+}
 
-  li {
-    padding: 1rem 2rem;
-    transition: 0.5s;
-  }
+.link {
+  padding: 1rem 2rem;
+  transition: 0.5s;
 
-  li:hover {
+  &:hover {
     background: #39C;
     color: #FFF;
     cursor: pointer;
   }
 
+}
+
+.linkActive {
+  @extend .link;
+  background: #39C;
+  color: #FFF;
 }

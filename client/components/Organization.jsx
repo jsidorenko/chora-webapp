@@ -1,14 +1,13 @@
 import React from 'react'
-import Members from './Organization/Members'
+import Contributors from './Organization/Contributors'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
 import Tasks from './Organization/Tasks'
 import Tokens from './Organization/Tokens'
 import Transactions from './Organization/Transactions'
-import Voting from './Organization/Voting'
 import styles from './Organization.scss'
 
-const Organization = ({ address, currentView, isMember, isOwner, organization, setCurrentView }) => (
+const Organization = ({ address, currentView, isContributor, isOwner, organization, setCurrentView }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Sidebar
@@ -19,7 +18,7 @@ const Organization = ({ address, currentView, isMember, isOwner, organization, s
       {currentView === 'overview' &&
         <Overview
           address={address}
-          isMember={isMember}
+          isContributor={isContributor}
           isOwner={isOwner}
           organization={organization}
         />
@@ -30,20 +29,14 @@ const Organization = ({ address, currentView, isMember, isOwner, organization, s
           organization={organization}
         />
       }
-      {currentView === 'voting' &&
-        <Voting
-          address={address}
-          organization={organization}
-        />
-      }
       {currentView === 'tokens' &&
         <Tokens
           address={address}
           organization={organization}
         />
       }
-      {currentView === 'members' &&
-        <Members
+      {currentView === 'contributors' &&
+        <Contributors
           address={address}
           organization={organization}
         />

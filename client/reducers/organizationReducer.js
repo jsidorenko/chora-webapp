@@ -34,7 +34,7 @@ const organizationReducer = (state = initialState, action) => {
         organization: {
           name: action.payload[0],
           owner: action.payload[1],
-          members: action.payload[2],
+          contributors: action.payload[2],
         },
         organizationLoading: false,
       }

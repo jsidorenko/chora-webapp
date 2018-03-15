@@ -10,14 +10,11 @@ const Sidebar = ({ account, accountError, accountLoading, currentView, setCurren
       <li className={currentView === 'tasks' ? styles.linkActive : styles.link} onClick={() => setCurrentView('tasks')}>
         Tasks
       </li>
-      <li className={currentView === 'voting' ? styles.linkActive : styles.link} onClick={() => setCurrentView('voting')}>
-        Voting
-      </li>
       <li className={currentView === 'tokens' ? styles.linkActive : styles.link} onClick={() => setCurrentView('tokens')}>
         Tokens
       </li>
-      <li className={currentView === 'members' ? styles.linkActive : styles.link} onClick={() => setCurrentView('members')}>
-        Members
+      <li className={currentView === 'contributors' ? styles.linkActive : styles.link} onClick={() => setCurrentView('contributors')}>
+        Contributors
       </li>
       <li className={currentView === 'transactions' ? styles.linkActive : styles.link} onClick={() => setCurrentView('transactions')}>
         Transactions

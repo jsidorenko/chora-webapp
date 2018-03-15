@@ -11,11 +11,11 @@ class OrganizationContainer extends Component {
     super(props)
     this.state = {
       currentView: 'overview',
-      isMember: null,
+      isContributor: null,
       isOwner: null,
     }
     this.setCurrentView = this.setCurrentView.bind(this)
-    this.setMembership = this.setMembership.bind(this)
+    this.setContributor = this.setContributor.bind(this)
     this.setOwnership = this.setOwnership.bind(this)
   }
 
@@ -24,8 +24,8 @@ class OrganizationContainer extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.isMember === null && !this.props.organizationLoading && this.props.organization) {
-      this.setMembership()
+    if (this.state.isContributor === null && !this.props.organizationLoading && this.props.organization) {
+      this.setContributor()
     }
     if (this.state.isOwner === null && !this.props.organizationLoading && this.props.organization) {
       this.setOwnership()
@@ -38,11 +38,11 @@ class OrganizationContainer extends Component {
     })
   }
 
-  setMembership() {
+  setContributor() {
     const account = this.props.accountAddress.toLowerCase()
-    const members = this.props.organization.members.map(member => member.toLowerCase())
+    const contributors = this.props.organization.contributors.map(contributor => contributor.toLowerCase())
     this.setState({
-      isMember: members.includes(account),
+      isContributor: contributors.includes(account),
     })
   }
 
@@ -62,7 +62,7 @@ class OrganizationContainer extends Component {
       <Organization
         address={this.props.match.params.address}
         currentView={this.state.currentView}
-        isMember={this.state.isMember}
+        isContributor={this.state.isContributor}
         isOwner={this.state.isOwner}
         organization={this.props.organization}
         setCurrentView={this.setCurrentView}

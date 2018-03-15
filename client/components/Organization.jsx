@@ -3,7 +3,7 @@ import Members from './Organization/Members'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
 import Tasks from './Organization/Tasks'
-import Token from './Organization/Token'
+import Tokens from './Organization/Tokens'
 import Transactions from './Organization/Transactions'
 import Voting from './Organization/Voting'
 import styles from './Organization.scss'
@@ -36,14 +36,14 @@ const Organization = ({ address, currentView, isMember, isOwner, organization, s
           organization={organization}
         />
       }
-      {currentView === 'members' &&
-        <Members
+      {currentView === 'tokens' &&
+        <Tokens
           address={address}
           organization={organization}
         />
       }
-      {currentView === 'token' &&
-        <Token
+      {currentView === 'members' &&
+        <Members
           address={address}
           organization={organization}
         />

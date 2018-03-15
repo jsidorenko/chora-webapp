@@ -24,10 +24,10 @@ class OrganizationContainer extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.organization && this.state.isMember === null) {
+    if (this.state.isMember === null && !this.props.organizationLoading && this.props.organization) {
       this.setMembership()
     }
-    if (this.props.organization && this.state.isOwner === null) {
+    if (this.state.isOwner === null && !this.props.organizationLoading && this.props.organization) {
       this.setOwnership()
     }
   }
@@ -38,17 +38,17 @@ class OrganizationContainer extends Component {
     })
   }
 
-  setOwnership() {
+  setMembership() {
     const account = this.props.accountAddress.toLowerCase()
-    const members = this.props.organization.members
+    const members = this.props.organization.members.map(member => member.toLowerCase())
     this.setState({
       isMember: members.includes(account),
     })
   }
 
-  setMembership() {
+  setOwnership() {
     const account = this.props.accountAddress.toLowerCase()
-    const owner = this.props.organization.owner
+    const owner = this.props.organization.owner.toLowerCase()
     this.setState({
       isOwner: account === owner,
     })

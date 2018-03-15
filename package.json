@@ -1,5 +1,5 @@
 {
-  "name": "choratech-web",
+  "name": "chora-webapp",
   "version": "0.0.0",
   "scripts": {
     "build": "webpack -p",

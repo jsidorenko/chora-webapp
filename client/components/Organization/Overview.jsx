@@ -7,7 +7,7 @@ const Overview = ({ address, organization }) => (
     <p>name: {organization.name}</p>
     <p>address: {address}</p>
     <p>owner: {organization.owner}</p>
-    <p>tokens: 1</p>
+    <p>tokens: 2</p>
   </div>
 )
 

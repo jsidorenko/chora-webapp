@@ -7,7 +7,10 @@ const Contributors = ({ address, organization }) => (
     <ul>
       {organization.contributors.map(contributor => (
         <li key={contributor}>
-          {contributor}
+          <p>account: {contributor}</p>
+          <p>bountiesCreated: 1</p>
+          <p>bountiesCompleted: 0</p>
+          <p>tokens: 2</p>
         </li>
       ))}
     </ul>

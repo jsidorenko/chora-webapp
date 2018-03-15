@@ -6,7 +6,7 @@ const Account = ({ address, isContributor, isOwner, organization }) => (
     <h2>Account</h2>
     <p>isOwner: {isOwner ? 'true' : 'false'}</p>
     <p>isContributor: {isContributor ? 'true' : 'false'}</p>
-    <p>tokensOwned: 1</p>
+    <p>tokensOwned: 2</p>
   </div>
 )
 

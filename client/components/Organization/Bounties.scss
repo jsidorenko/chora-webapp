@@ -1,3 +1,5 @@
+@import '../../stylesheets/button.scss';
+
 .content {
   padding: 2rem;
   width: 80vw;
@@ -10,4 +12,13 @@
     padding: 0.5rem 0;
   }
 
+  ul {
+    margin-left: 1.5rem;
+    padding: 0.5rem 0;
+  }
+
+}
+
+.button {
+  margin: 0.5rem;
 }

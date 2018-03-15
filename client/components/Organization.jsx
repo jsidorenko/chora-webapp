@@ -8,7 +8,7 @@ import Transactions from './Organization/Transactions'
 import Voting from './Organization/Voting'
 import styles from './Organization.scss'
 
-const Organization = ({ address, currentView, organization, setCurrentView }) => (
+const Organization = ({ address, currentView, isMember, isOwner, organization, setCurrentView }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Sidebar
@@ -19,6 +19,8 @@ const Organization = ({ address, currentView, organization, setCurrentView }) =>
       {currentView === 'overview' &&
         <Overview
           address={address}
+          isMember={isMember}
+          isOwner={isOwner}
           organization={organization}
         />
       }

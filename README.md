@@ -10,4 +10,6 @@ chora web application
 
 ## Development Environment
 
+- run [chora-contracts](https://github.com/choraio/chora-contracts)
+- copy builds directory
 - run `yarn start`

@@ -7,7 +7,6 @@ import router from './router'
 import './index.scss'
 
 // Contracts
-import Organization from '../build/contracts/Organization.json'
 import Organizations from '../build/contracts/Organizations.json'
 
 // Drizzle Options
@@ -20,12 +19,10 @@ const options = {
     },
   },
   contracts: [
-    Organization,
     Organizations,
   ],
   events: {
-    Organization: ['OrganizationUpdate'],
-    Organizations: ['OrganizationsUpdate'],
+    Organizations: ['OrganizationCreated'],
   },
 }
 

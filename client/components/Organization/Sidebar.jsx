@@ -4,19 +4,19 @@ import styles from './Sidebar.scss'
 const Sidebar = ({ account, accountError, accountLoading, currentView, setCurrentView }) => (
   <div className={styles.sidebar}>
     <ul className={styles.list}>
-      <li className={currentView === 'overview' ? styles.linkActive : styles.link} onClick={() => setCurrentView('overview')}>
+      <li className={currentView === 'Overview' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Overview')}>
         Overview
       </li>
-      <li className={currentView === 'tasks' ? styles.linkActive : styles.link} onClick={() => setCurrentView('tasks')}>
-        Tasks
+      <li className={currentView === 'Account' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Account')}>
+        Account
       </li>
-      <li className={currentView === 'tokens' ? styles.linkActive : styles.link} onClick={() => setCurrentView('tokens')}>
-        Tokens
+      <li className={currentView === 'Bounties' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Bounties')}>
+        Bounties
       </li>
-      <li className={currentView === 'contributors' ? styles.linkActive : styles.link} onClick={() => setCurrentView('contributors')}>
+      <li className={currentView === 'Contributors' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Contributors')}>
         Contributors
       </li>
-      <li className={currentView === 'transactions' ? styles.linkActive : styles.link} onClick={() => setCurrentView('transactions')}>
+      <li className={currentView === 'Transactions' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Transactions')}>
         Transactions
       </li>
     </ul>

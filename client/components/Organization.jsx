@@ -1,9 +1,9 @@
 import React from 'react'
+import Account from './Organization/Account'
 import Contributors from './Organization/Contributors'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
-import Tasks from './Organization/Tasks'
-import Tokens from './Organization/Tokens'
+import Bounties from './Organization/Bounties'
 import Transactions from './Organization/Transactions'
 import styles from './Organization.scss'
 
@@ -15,33 +15,33 @@ const Organization = ({ address, currentView, isContributor, isOwner, organizati
         organization={organization}
         setCurrentView={setCurrentView}
       />
-      {currentView === 'overview' &&
+      {currentView === 'Overview' &&
         <Overview
+          address={address}
+          organization={organization}
+        />
+      }
+      {currentView === 'Account' &&
+        <Account
           address={address}
           isContributor={isContributor}
           isOwner={isOwner}
           organization={organization}
         />
       }
-      {currentView === 'tasks' &&
-        <Tasks
+      {currentView === 'Bounties' &&
+        <Bounties
           address={address}
           organization={organization}
         />
       }
-      {currentView === 'tokens' &&
-        <Tokens
-          address={address}
-          organization={organization}
-        />
-      }
-      {currentView === 'contributors' &&
+      {currentView === 'Contributors' &&
         <Contributors
           address={address}
           organization={organization}
         />
       }
-      {currentView === 'transactions' &&
+      {currentView === 'Transactions' &&
         <Transactions
           address={address}
           organization={organization}

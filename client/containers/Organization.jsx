@@ -10,7 +10,7 @@ class OrganizationContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentView: 'overview',
+      currentView: 'Overview',
       isContributor: null,
       isOwner: null,
     }

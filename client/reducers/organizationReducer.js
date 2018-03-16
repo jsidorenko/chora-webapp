@@ -2,6 +2,11 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
+  // bounty
+  bountyError: null,
+  bountyLoading: true,
+  bountySuccess: false,
+
   // organization
   organization: null,
   organizationError: null,
@@ -11,6 +16,54 @@ const initialState = {
 
 const organizationReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // createBounty
+
+    case actions.ORGANIZATION_CREATE_BOUNTY:
+      return {
+        ...state,
+        bountyError: null,
+        bountyLoading: true,
+        bountySuccess: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_BOUNTY_ERROR:
+      return {
+        ...state,
+        bountyError: action.payload,
+        bountyLoading: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_BOUNTY_SUCCESS:
+      return {
+        ...state,
+        bountyLoading: false,
+        bountySuccess: action.payload,
+      }
+
+    // deleteBounty
+
+    case actions.ORGANIZATION_DELETE_BOUNTY:
+      return {
+        ...state,
+        bountyError: null,
+        bountyLoading: true,
+        bountySuccess: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_BOUNTY_ERROR:
+      return {
+        ...state,
+        bountyError: action.payload,
+        bountyLoading: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_BOUNTY_SUCCESS:
+      return {
+        ...state,
+        bountyLoading: false,
+        bountySuccess: action.payload,
+      }
 
     // getOrganization
 
@@ -32,11 +85,13 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         organization: {
-          contributors: action.payload[0],
-          name: action.payload[1],
-          owner: action.payload[2],
-          tokensAccount: action.payload[3].c[0],
-          tokensTotal: action.payload[4].c[0],
+          accountBounties: action.payload[0],
+          accountTokens: action.payload[1].c[0],
+          bounties: action.payload[2],
+          contributors: action.payload[3],
+          name: action.payload[4],
+          owner: action.payload[5],
+          tokens: action.payload[6].c[0],
         },
         organizationLoading: false,
       }

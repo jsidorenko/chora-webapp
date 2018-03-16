@@ -80,7 +80,6 @@ class OrganizationsContainer extends Component {
         isOrganizationsOwner={this.state.isOrganizationsOwner}
         organizationName={this.state.organizationName}
         organizations={this.props.organizations}
-        selectOrganiztion={this.props.selectOrganiztion}
       />
     )
   }

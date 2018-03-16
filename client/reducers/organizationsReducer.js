@@ -2,11 +2,15 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
+  // organization
+  organizationError: null,
+  organizationLoading: true,
+  organizationSuccess: false,
+
   // organizations
   organizations: null,
   organizationsError: null,
   organizationsLoading: true,
-  organizationsSuccess: false,
 
 }
 
@@ -18,23 +22,23 @@ const organizationsReducer = (state = initialState, action) => {
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION:
       return {
         ...state,
-        organizationsError: null,
-        organizationsLoading: true,
-        organizationsSuccess: false,
+        organizationError: null,
+        organizationLoading: true,
+        organizationSuccess: false,
       }
 
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION_ERROR:
       return {
         ...state,
-        organizationsError: action.payload,
-        organizationsLoading: false,
+        organizationError: action.payload,
+        organizationLoading: false,
       }
 
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION_SUCCESS:
       return {
         ...state,
-        organizationsLoading: false,
-        organizationsSuccess: action.payload,
+        organizationLoading: false,
+        organizationSuccess: action.payload,
       }
 
     // deleteOrganization
@@ -42,23 +46,23 @@ const organizationsReducer = (state = initialState, action) => {
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION:
       return {
         ...state,
-        organizationsError: null,
-        organizationsLoading: true,
-        organizationsSuccess: false,
+        organizationError: null,
+        organizationLoading: true,
+        organizationSuccess: false,
       }
 
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION_ERROR:
       return {
         ...state,
-        organizationsError: action.payload,
-        organizationsLoading: false,
+        organizationError: action.payload,
+        organizationLoading: false,
       }
 
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION_SUCCESS:
       return {
         ...state,
-        organizationsLoading: false,
-        organizationsSuccess: action.payload,
+        organizationLoading: false,
+        organizationSuccess: action.payload,
       }
 
     // getAccountOrganizations

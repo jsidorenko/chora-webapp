@@ -8,20 +8,20 @@ const Transactions = ({ address, organization }) => (
       <li>
         <p>event: organization created</p>
         <p>sender: {organization.owner}</p>
-        <p>etherAward: na</p>
-        <p>tokenAward: 1</p>
+        <p>ether: na</p>
+        <p>tokens: 1</p>
       </li>
       <li>
         <p>event: organization name updated</p>
         <p>sender: {organization.owner}</p>
-        <p>etherAward: na</p>
-        <p>tokenAward: na</p>
+        <p>ether: na</p>
+        <p>tokens: na</p>
       </li>
       <li>
         <p>event: bounty created</p>
         <p>sender: {organization.owner}</p>
-        <p>etherAward: na</p>
-        <p>tokenAward: 1</p>
+        <p>ether: na</p>
+        <p>tokens: 1</p>
       </li>
     </ul>
   </div>

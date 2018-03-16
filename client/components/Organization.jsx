@@ -3,7 +3,7 @@ import Account from './Organization/Account'
 import Contributors from './Organization/Contributors'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
-import Bounties from './Organization/Bounties'
+import Bounties from '../containers/Organization/Bounties'
 import Transactions from './Organization/Transactions'
 import styles from './Organization.scss'
 

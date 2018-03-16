@@ -7,6 +7,7 @@ const Dashboard = ({
   accountAddress,
   accountOrganizations,
   createOrganization,
+  deleteOrganization,
   isOrganizationsOwner,
   organization,
   selectOrganiztion,
@@ -21,6 +22,7 @@ const Dashboard = ({
         accountAddress={accountAddress}
         accountOrganizations={accountOrganizations}
         createOrganization={createOrganization}
+        deleteOrganization={deleteOrganization}
         isOrganizationsOwner={isOrganizationsOwner}
         selectOrganiztion={selectOrganiztion}
       />

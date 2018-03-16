@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOrganizationsOwner, getAccountOrganizations } from '../actions/accountActions'
+import { getOrganization, resetOrganization } from '../actions/organizationActions'
+import { deleteOrganization } from '../actions/organizationsActions'
 import Dashboard from '../components/Dashboard'
 import Loading from '../components/Loading'
 
@@ -9,8 +11,10 @@ class DashboardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      organizationAddress: null,
       isOrganizationsOwner: null,
     }
+    this.deleteOrganization = this.deleteOrganization.bind(this)
     this.selectOrganiztion = this.selectOrganiztion.bind(this)
     this.setOrganizationsOwner = this.setOrganizationsOwner.bind(this)
   }
@@ -31,6 +35,17 @@ class DashboardContainer extends Component {
     if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
       this.setOrganizationsOwner()
     }
+    if (this.state.organizationAddress && this.props.organization) {
+      this.props.deleteOrganization(this.state.organizationAddress, this.props.organization.owner, this.props.accountAddress)
+      this.props.resetOrganization()
+    }
+  }
+
+  deleteOrganization(address) {
+    this.props.getOrganization(address)
+    this.setState({
+      organizationAddress: address,
+    })
   }
 
   selectOrganiztion(address) {
@@ -53,6 +68,7 @@ class DashboardContainer extends Component {
       <Dashboard
         accountAddress={this.props.accountAddress}
         accountOrganizations={this.props.accountOrganizations}
+        deleteOrganization={this.deleteOrganization}
         isOrganizationsOwner={this.state.isOrganizationsOwner}
         organization={this.props.organization}
         selectOrganiztion={this.selectOrganiztion}
@@ -75,11 +91,17 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  deleteOrganization(organizationAddress, organizationOwner, sender) {
+    dispatch(deleteOrganization(organizationAddress, organizationOwner, sender))
+  },
   getAccountOrganizations(account) {
     dispatch(getAccountOrganizations(account))
   },
   getOrganizationsOwner() {
     dispatch(getOrganizationsOwner())
+  },
+  resetOrganization() {
+    dispatch(resetOrganization())
   },
 })
 

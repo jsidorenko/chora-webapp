@@ -1,6 +1,6 @@
 import React from 'react'
 import Create from './Organizations/Create'
-import List from './Organizations/List'
+import List from './Organizations/Organizations'
 import styles from './Organizations.scss'
 
 const Organizations = ({

@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './List.scss'
+import styles from './Organizations.scss'
 
-const List = ({ deleteOrganization, organizations, isOrganizationsOwner }) => (
+const Organizations = ({ deleteOrganization, organizations, isOrganizationsOwner }) => (
   <div className={styles.container}>
     <h2>{'All Organizations'}</h2>
     <ul>
@@ -22,4 +22,4 @@ const List = ({ deleteOrganization, organizations, isOrganizationsOwner }) => (
   </div>
 )
 
-export default List
+export default Organizations

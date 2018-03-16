@@ -64,6 +64,7 @@ class OrganizationContainer extends Component {
     }
     return (
       <Organization
+        accountAddress={this.props.accountAddress}
         address={this.props.match.params.address}
         currentView={this.state.currentView}
         isContributor={this.state.isContributor}

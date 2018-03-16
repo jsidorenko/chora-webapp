@@ -1,0 +1,17 @@
+@import '../../../stylesheets/button.scss';
+
+.field {
+  padding: 1rem 0;
+}
+
+.label {
+  display: block;
+  padding-bottom: 0.5rem;
+}
+
+.input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}

@@ -97,6 +97,9 @@ const mapDispatchToProps = dispatch => ({
   getAccountOrganizations(account) {
     dispatch(getAccountOrganizations(account))
   },
+  getOrganization(address) {
+    dispatch(getOrganization(address))
+  },
   getOrganizationsOwner() {
     dispatch(getOrganizationsOwner())
   },

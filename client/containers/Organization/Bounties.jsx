@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getBounty } from '../../actions/bountiesActions'
 import { createBounty, deleteBounty } from '../../actions/organizationActions'
 import Bounties from '../../components/Organization/Bounties'
@@ -10,14 +11,18 @@ class BountiesContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      bountyEther: 0,
-      bountyDescription: '',
-      bountyName: '',
+      currentView: 'List',
       loading: true,
+      newBounty: {
+        ether: 0,
+        description: '',
+        name: '',
+      }
     }
     this.createBounty = this.createBounty.bind(this)
     this.deleteBounty = this.deleteBounty.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.setView = this.setView.bind(this)
   }
 
   componentDidMount() {
@@ -31,7 +36,7 @@ class BountiesContainer extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.loading && this.props.organization.bounties.length === this.props.bounties.length) {
+    if (this.state.loading && this.props.bounties && this.props.organization.bounties.length === this.props.bounties.length) {
       this.setState({
         loading: false,
       })
@@ -39,33 +44,48 @@ class BountiesContainer extends Component {
   }
 
   createBounty() {
-    this.props.createBounty(this.state.bountyDescription, this.state.bountyEther, this.state.bountyName, this.props.accountAddress)
+    this.props.createBounty(this.props.match.params.address, this.state.newBounty, this.props.accountAddress)
   }
 
-  deleteBounty(bountyAddress) {
-    const index = this.props.organization.bounties.indexOf(bountyAddress)
+  deleteBounty(address) {
+    const index = this.props.organization.bounties.indexOf(address)
     const bounty = this.props.bounties[index]
-    this.props.deleteBounty(bountyAddress, bounty.owner, this.props.accountAddress)
+    this.props.deleteBounty(this.props.match.params.address, address, bounty.owner, this.props.accountAddress)
   }
 
   handleChange(event) {
     switch (event.target.id) {
       case 'ether':
       this.setState({
-        bountyEther: event.target.value,
+        newBounty: {
+          ...this.state.newBounty,
+          ether: event.target.value,
+        },
       })
       break
       case 'description':
       this.setState({
-        bountyDescription: event.target.value,
+        newBounty: {
+          ...this.state.newBounty,
+          description: event.target.value,
+        },
       })
       break
       case 'name':
       this.setState({
-        bountyName: event.target.value,
+        newBounty: {
+          ...this.state.newBounty,
+          name: event.target.value,
+        },
       })
       break
     }
+  }
+
+  setView(view) {
+    this.setState({
+      currentView: view,
+    })
   }
 
   render() {
@@ -76,12 +96,12 @@ class BountiesContainer extends Component {
       <Bounties
         addresses={this.props.organization.bounties}
         bounties={this.props.bounties}
-        bountyEther={this.state.bountyEther}
-        bountyDescription={this.state.bountyDescription}
-        bountyName={this.state.bountyName}
         createBounty={this.createBounty}
+        currentView={this.state.currentView}
         deleteBounty={this.deleteBounty}
+        newBounty={this.state.newBounty}
         handleChange={this.handleChange}
+        setView={this.setView}
       />
     )
   }
@@ -96,15 +116,15 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  createBounty(description, ether, bounty, sender) {
-    dispatch(createBounty(description, ether, bounty, sender))
+  createBounty(organizationAddress, newBounty, sender) {
+    dispatch(createBounty(organizationAddress, newBounty, sender))
   },
-  deleteBounty(bountyAddress, bountyOwner, sender) {
-    dispatch(deleteBounty(bountyAddress, bountyOwner, sender))
+  deleteBounty(organizationAddress, address, sender) {
+    dispatch(deleteBounty(organizationAddress, address, sender))
   },
   getBounty(address) {
     dispatch(getBounty(address))
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BountiesContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BountiesContainer))

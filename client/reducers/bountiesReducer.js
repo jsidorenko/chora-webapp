@@ -13,20 +13,20 @@ const bountiesReducer = (state = initialState, action) => {
 
     // getBounty
 
-    case actions.BOUNTY_GET_BOUNTY:
+    case actions.BOUNTIES_GET_BOUNTY:
       return {
         ...state,
-        bounties: null,
+        bounties: [],
         bountiesError: null,
       }
 
-    case actions.BOUNTY_GET_BOUNTY_ERROR:
+    case actions.BOUNTIES_GET_BOUNTY_ERROR:
       return {
         ...state,
         bountiesError: action.payload,
       }
 
-    case actions.BOUNTY_GET_BOUNTY_SUCCESS:
+    case actions.BOUNTIES_GET_BOUNTY_SUCCESS:
       return {
         ...state,
         bounties: [...state.bounties, {
@@ -34,7 +34,8 @@ const bountiesReducer = (state = initialState, action) => {
           ether: action.payload[1].c[0],
           name: action.payload[2],
           owner: action.payload[3],
-          tokens: action.payload[4].c[0],
+          pursuer: action.payload[4],
+          tokens: action.payload[5].c[0],
         }],
       }
 

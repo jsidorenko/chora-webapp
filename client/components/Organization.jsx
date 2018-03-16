@@ -7,7 +7,7 @@ import Bounties from '../containers/Organization/Bounties'
 import Transactions from './Organization/Transactions'
 import styles from './Organization.scss'
 
-const Organization = ({ address, currentView, isContributor, isOwner, organization, setCurrentView }) => (
+const Organization = ({ accountAddress, address, currentView, isContributor, isOwner, organization, setCurrentView }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Sidebar
@@ -31,6 +31,7 @@ const Organization = ({ address, currentView, isContributor, isOwner, organizati
       }
       {currentView === 'Bounties' &&
         <Bounties
+          accountAddress={accountAddress}
           address={address}
           organization={organization}
         />

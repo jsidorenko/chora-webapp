@@ -1,13 +1,13 @@
 import store from '../index'
 import * as actions from '../constants/actions'
-import { organization } from '../contracts'
+import { organization, organizations } from '../contracts'
 
 // createBounty
 
-export const createBounty = (organizationName, sender) => ({
+export const createBounty = (organizationAddress, newBounty, sender) => ({
   type: actions.ORGANIZATION_CREATE_BOUNTY,
-  payload: organization.deployed().then(instance => {
-    return instance.createBounty(organizationName, sender, { from: sender })
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.createBounty(newBounty.description, newBounty.ether, newBounty.name, sender, { from: sender })
   }).then(response => {
     store.dispatch(createBountySuccess(response))
   }).catch(error => {
@@ -27,10 +27,10 @@ export const createBountySuccess = (response) => ({
 
 // deleteBounty
 
-export const deleteBounty = (organizationAddress, organizationOwner, sender) => ({
+export const deleteBounty = (organizationAddress, address, sender) => ({
   type: actions.ORGANIZATION_DELETE_BOUNTY,
-  payload: organization.deployed().then(instance => {
-    return instance.deleteBounty(organizationAddress, organizationOwner, { from: sender })
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.deleteBounty(address, sender, { from: sender })
   }).then(response => {
     store.dispatch(deleteBountySuccess(response))
   }).catch(error => {
@@ -50,9 +50,9 @@ export const deleteBountySuccess = (response) => ({
 
 // getOrganization
 
-export const getOrganization = (address) => ({
+export const getOrganization = (organizationAddress) => ({
   type: actions.ORGANIZATION_GET_ORGANIZATION,
-  payload: organization.at(address).then(instance => {
+  payload: organization.at(organizationAddress).then(instance => {
     return instance.getOrganization()
   }).then(response => {
     store.dispatch(getOrganizationSuccess(response))

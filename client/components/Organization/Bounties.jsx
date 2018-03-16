@@ -1,27 +1,31 @@
 import React from 'react'
+import Create from './Bounties/Create'
+import List from './Bounties/List'
 import styles from './Bounties.scss'
 
-const Bounties = ({ addresses, bounties }) => (
+const Bounties = ({ addresses, bounties, createBounty, currentView, deleteBounty, handleChange, newBounty, setView }) => (
   <div className={styles.content}>
+    <button className={styles.button} onClick={() => setView('List')}>
+      List
+    </button>
+    <button className={styles.button} onClick={() => setView('Create')}>
+      Create
+    </button>
     <h2>Bounties</h2>
-    <ul>
-      {bounties && bounties.map((bounty, index) => (
-        <li key={bounty}>
-          <p>address: {addresses[index]}</p>
-          <p>description: {bounty.description}</p>
-          <p>name: {bounty.name}</p>
-          <p>owner: {bounty.owner}</p>
-          <p>ether: {bounty.ether}</p>
-          <p>tokens: {bounty.tokens}</p>
-          <button className={styles.button}>
-            Claim Bounty
-          </button>
-          <button className={styles.button}>
-            Submit Bounty
-          </button>
-        </li>
-      ))}
-    </ul>
+    {currentView === 'Create' &&
+      <Create
+        createBounty={createBounty}
+        handleChange={handleChange}
+        newBounty={newBounty}
+      />
+    }
+    {currentView === 'List' &&
+      <List
+        addresses={addresses}
+        bounties={bounties}
+        deleteBounty={deleteBounty}
+      />
+    }
   </div>
 )
 

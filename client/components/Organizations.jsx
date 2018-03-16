@@ -5,19 +5,21 @@ import styles from './Organizations.scss'
 
 const Organizations = ({
   createOrganization,
-  handleName,
-  name,
+  handleOrganizationName,
+  isOrganizationsOwner,
+  organizationName,
   organizations,
 }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <List
         organizations={organizations}
+        isOrganizationsOwner={isOrganizationsOwner}
       />
       <Create
         createOrganization={createOrganization}
-        handleName={handleName}
-        name={name}
+        handleOrganizationName={handleOrganizationName}
+        organizationName={organizationName}
       />
     </div>
   </div>

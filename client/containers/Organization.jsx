@@ -16,7 +16,7 @@ class OrganizationContainer extends Component {
     }
     this.setCurrentView = this.setCurrentView.bind(this)
     this.setContributor = this.setContributor.bind(this)
-    this.setOwnership = this.setOwnership.bind(this)
+    this.setOwner = this.setOwner.bind(this)
   }
 
   componentDidMount() {
@@ -28,7 +28,7 @@ class OrganizationContainer extends Component {
       this.setContributor()
     }
     if (this.state.isOwner === null && !this.props.organizationLoading && this.props.organization) {
-      this.setOwnership()
+      this.setOwner()
     }
   }
 
@@ -46,7 +46,7 @@ class OrganizationContainer extends Component {
     })
   }
 
-  setOwnership() {
+  setOwner() {
     const account = this.props.accountAddress.toLowerCase()
     const owner = this.props.organization.owner.toLowerCase()
     this.setState({

@@ -17,29 +17,6 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    // checkOrganizationsOwner
-
-    case actions.ACCOUNT_CHECK_ORGANIZATIONS_OWNER:
-      return {
-        ...state,
-        organizationsOwnerError: null,
-        organizationsOwnerLoading: true,
-      }
-
-    case actions.ACCOUNT_CHECK_ORGANIZATIONS_OWNER_ERROR:
-      return {
-        ...state,
-        organizationsOwnerError: action.payload,
-        organizationsOwnerLoading: false,
-      }
-
-    case actions.ACCOUNT_CHECK_ORGANIZATIONS_OWNER_SUCCESS:
-      return {
-        ...state,
-        organizationsOwner: action.payload,
-        organizationsOwnerLoading: false,
-      }
-
     // getAccountOrganizations
 
     case actions.ACCOUNT_GET_ORGANIZATIONS:
@@ -63,6 +40,29 @@ const userReducer = (state = initialState, action) => {
           organizations: action.payload,
         },
         accountLoading: false,
+      }
+
+    // getOrganizationsOwner
+
+    case actions.ACCOUNT_GET_ORGANIZATIONS_OWNER:
+      return {
+        ...state,
+        organizationsOwnerError: null,
+        organizationsOwnerLoading: true,
+      }
+
+    case actions.ACCOUNT_GET_ORGANIZATIONS_OWNER_ERROR:
+      return {
+        ...state,
+        organizationsOwnerError: action.payload,
+        organizationsOwnerLoading: false,
+      }
+
+    case actions.ACCOUNT_GET_ORGANIZATIONS_OWNER_SUCCESS:
+      return {
+        ...state,
+        organizationsOwner: action.payload,
+        organizationsOwnerLoading: false,
       }
 
     default:

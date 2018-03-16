@@ -3,15 +3,15 @@ import styles from './Create.scss'
 
 const Create = ({
   createOrganization,
-  handleName,
-  name,
+  handleOrganizationName,
+  organizationName,
 }) => (
   <div className={styles.container}>
     <h2>Create Organization</h2>
     <input
       className={styles.input}
-      onChange={handleName}
-      value={name}
+      onChange={handleOrganizationName}
+      value={organizationName}
     />
     <button className={styles.button} onClick={createOrganization}>
       {'Create Organization'}

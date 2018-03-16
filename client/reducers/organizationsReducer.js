@@ -37,6 +37,30 @@ const organizationsReducer = (state = initialState, action) => {
         organizationsSuccess: action.payload,
       }
 
+    // deleteOrganization
+
+    case actions.ORGANIZATIONS_DELETE_ORGANIZATION:
+      return {
+        ...state,
+        organizationsError: null,
+        organizationsLoading: true,
+        organizationsSuccess: false,
+      }
+
+    case actions.ORGANIZATIONS_DELETE_ORGANIZATION_ERROR:
+      return {
+        ...state,
+        organizationsError: action.payload,
+        organizationsLoading: false,
+      }
+
+    case actions.ORGANIZATIONS_DELETE_ORGANIZATION_SUCCESS:
+      return {
+        ...state,
+        organizationsLoading: false,
+        organizationsSuccess: action.payload,
+      }
+
     // getAccountOrganizations
 
     case actions.ORGANIZATIONS_GET_ORGANIZATIONS:

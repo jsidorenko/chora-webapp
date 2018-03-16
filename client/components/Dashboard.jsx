@@ -4,8 +4,8 @@ import Organizations from './Dashboard/Organizations'
 import styles from './Dashboard.scss'
 
 const Dashboard = ({
-  account,
   accountAddress,
+  accountOrganizations,
   createOrganization,
   isOrganizationsOwner,
   organization,
@@ -14,15 +14,14 @@ const Dashboard = ({
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Account
-        account={account}
         accountAddress={accountAddress}
         isOrganizationsOwner={isOrganizationsOwner}
       />
       <Organizations
         accountAddress={accountAddress}
+        accountOrganizations={accountOrganizations}
         createOrganization={createOrganization}
         isOrganizationsOwner={isOrganizationsOwner}
-        organizations={account.organizations}
         selectOrganiztion={selectOrganiztion}
       />
     </div>

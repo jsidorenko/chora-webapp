@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Account.scss'
 
-const Account = ({ account, accountAddress, isOrganizationsOwner }) => (
+const Account = ({ accountAddress, isOrganizationsOwner }) => (
   <div className={styles.container}>
     <h2>Account</h2>
     <p>{accountAddress}</p>

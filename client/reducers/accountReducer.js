@@ -2,10 +2,10 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
-  // account
-  account: null,
-  accountError: null,
-  accountLoading: true,
+  // accountOrganizations
+  accountOrganizations: null,
+  accountOrganizationsError: null,
+  accountOrganizationsLoading: true,
 
   // organiationsOwner
   organizationsOwner: null,
@@ -22,24 +22,22 @@ const userReducer = (state = initialState, action) => {
     case actions.ACCOUNT_GET_ORGANIZATIONS:
       return {
         ...state,
-        accountError: null,
-        accountLoading: true,
+        accountOrganizationsError: null,
+        accountOrganizationsLoading: true,
       }
 
     case actions.ACCOUNT_GET_ORGANIZATIONS_ERROR:
       return {
         ...state,
-        accountError: action.payload,
-        accountLoading: false,
+        accountOrganizationsError: action.payload,
+        accountOrganizationsLoading: false,
       }
 
     case actions.ACCOUNT_GET_ORGANIZATIONS_SUCCESS:
       return {
         ...state,
-        account: {
-          organizations: action.payload,
-        },
-        accountLoading: false,
+        accountOrganizations: action.payload,
+        accountOrganizationsLoading: false,
       }
 
     // getOrganizationsOwner

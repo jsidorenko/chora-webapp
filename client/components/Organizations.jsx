@@ -5,6 +5,7 @@ import styles from './Organizations.scss'
 
 const Organizations = ({
   createOrganization,
+  deleteOrganization,
   handleOrganizationName,
   isOrganizationsOwner,
   organizationName,
@@ -13,6 +14,7 @@ const Organizations = ({
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <List
+        deleteOrganization={deleteOrganization}
         organizations={organizations}
         isOrganizationsOwner={isOrganizationsOwner}
       />

@@ -16,9 +16,14 @@ class DashboardContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.getAccountOrganizations(this.props.accountAddress)
+    if (!this.props.organizations) {
+      this.props.getAccountOrganizations(this.props.accountAddress)
+    }
     if (!this.props.organizationsOwner) {
       this.props.getOrganizationsOwner()
+    }
+    if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
+      this.setOrganizationsOwner()
     }
   }
 
@@ -41,13 +46,13 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    if (this.props.accountLoading || this.props.organizationsOwnerLoading) {
+    if (this.props.accountOrganizationsLoading || this.props.organizationsOwnerLoading) {
       return <Loading />
     }
     return (
       <Dashboard
-        account={this.props.account}
         accountAddress={this.props.accountAddress}
+        accountOrganizations={this.props.accountOrganizations}
         isOrganizationsOwner={this.state.isOrganizationsOwner}
         organization={this.props.organization}
         selectOrganiztion={this.selectOrganiztion}
@@ -58,9 +63,9 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  account: state.account.account,
-  accountError: state.account.accountError,
-  accountLoading: state.account.accountLoading,
+  accountOrganizations: state.account.accountOrganizations,
+  accountOrganizationsError: state.account.accountOrganizationsError,
+  accountOrganizationsLoading: state.account.accountOrganizationsLoading,
   organization: state.organization.organization,
   organizationError: state.organization.organizationError,
   organizationLoading: state.organization.organizationLoading,
@@ -70,11 +75,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getOrganizationsOwner() {
-    dispatch(getOrganizationsOwner())
-  },
   getAccountOrganizations(account) {
     dispatch(getAccountOrganizations(account))
+  },
+  getOrganizationsOwner() {
+    dispatch(getOrganizationsOwner())
   },
 })
 

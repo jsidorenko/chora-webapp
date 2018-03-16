@@ -10,5 +10,9 @@ const organization = contract(Organization)
 organizations.setProvider(web3.currentProvider)
 organization.setProvider(web3.currentProvider)
 
+// set contract defaults(s)
+organization.defaults({ gas: 3000000 })
+organizations.defaults({ gas: 3000000 })
+
 // export contract instance(s)
 export { organizations, organization }

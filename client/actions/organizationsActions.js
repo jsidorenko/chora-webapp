@@ -4,10 +4,10 @@ import { organizations } from '../contracts'
 
 // createOrganization
 
-export const createOrganization = (name, owner) => ({
+export const createOrganization = (organizationName, sender) => ({
   type: actions.ORGANIZATIONS_CREATE_ORGANIZATION,
   payload: organizations.deployed().then(instance => {
-    return instance.createOrganization(name, owner, { from: owner })
+    return instance.createOrganization(organizationName, sender, { from: sender })
   }).then(response => {
     store.dispatch(createOrganizationSuccess(response))
   }).catch(error => {
@@ -22,6 +22,29 @@ export const createOrganizationError = (error) => ({
 
 export const createOrganizationSuccess = (response) => ({
   type: actions.ORGANIZATIONS_CREATE_ORGANIZATION_SUCCESS,
+  payload: response,
+})
+
+// deleteOrganization
+
+export const deleteOrganization = (organizationAddress, sender) => ({
+  type: actions.ORGANIZATIONS_DELETE_ORGANIZATION,
+  payload: organizations.deployed().then(instance => {
+    return instance.deleteOrganization(organizationAddress, { from: sender })
+  }).then(response => {
+    store.dispatch(deleteOrganizationSuccess(response))
+  }).catch(error => {
+    store.dispatch(deleteOrganizationError(error))
+  }),
+})
+
+export const deleteOrganizationError = (error) => ({
+  type: actions.ORGANIZATIONS_DELETE_ORGANIZATION_ERROR,
+  payload: error,
+})
+
+export const deleteOrganizationSuccess = (response) => ({
+  type: actions.ORGANIZATIONS_DELETE_ORGANIZATION_SUCCESS,
   payload: response,
 })
 

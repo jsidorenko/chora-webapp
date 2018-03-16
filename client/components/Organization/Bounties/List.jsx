@@ -9,7 +9,7 @@ const List = ({ addresses, bounties, deleteBounty }) => (
     {bounties &&
       <ul>
         {bounties.map((bounty, index) => (
-          <li key={bounty}>
+          <li key={addresses[index]}>
             <p>address: {addresses[index]}</p>
             <p>description: {bounty.description}</p>
             <p>name: {bounty.name}</p>

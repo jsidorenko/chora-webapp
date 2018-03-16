@@ -2,9 +2,11 @@ import { createStore } from 'redux'
 import middleware from './middleware'
 import reducers from './reducers'
 
-const configureStore = () => {
+// configure create redux store
+const createReduxStore = () => {
   const store = createStore(reducers, middleware)
   return store
 }
 
-export default configureStore
+// export create redux store
+export default createReduxStore

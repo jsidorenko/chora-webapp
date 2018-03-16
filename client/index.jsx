@@ -2,14 +2,14 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { DrizzleProvider } from 'drizzle-react'
-import configureStore from './store'
+import createReduxStore from './store'
 import router from './router'
 import './index.scss'
 
-// Contracts
+// import contract interfaces
 import Organizations from '../build/contracts/Organizations.json'
 
-// Drizzle Options
+// configure drizzle options
 const options = {
   web3: {
     block: false,
@@ -22,12 +22,14 @@ const options = {
     Organizations,
   ],
   events: {
-    Organizations: ['OrganizationCreated'],
+    Organizations: ['OrganizationCreated', 'OrganizationDeleted'],
   },
 }
 
-const store = configureStore()
+// create redux store
+const store = createReduxStore()
 
+// render application
 render(
   <DrizzleProvider options={options}>
     <Provider store={store}>
@@ -37,4 +39,5 @@ render(
   document.getElementById('app')
 )
 
+// export redux store
 export default store

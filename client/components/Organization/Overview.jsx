@@ -7,7 +7,7 @@ const Overview = ({ address, organization }) => (
     <p>name: {organization.name}</p>
     <p>address: {address}</p>
     <p>owner: {organization.owner}</p>
-    <p>balance: {organization.balance}</p>
+    <p>tokensTotal: {organization.tokensTotal}</p>
   </div>
 )
 

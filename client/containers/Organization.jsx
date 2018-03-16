@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getOrganization } from '../actions/organizationActions'
+import { getOrganization, resetOrganization } from '../actions/organizationActions'
 import Organization from '../components/Organization'
 import Loading from '../components/Loading'
 
@@ -30,6 +30,10 @@ class OrganizationContainer extends Component {
     if (this.state.isOwner === null && !this.props.organizationLoading && this.props.organization) {
       this.setOwner()
     }
+  }
+
+  componentWillUnmount() {
+    this.props.resetOrganization()
   }
 
   setCurrentView(view) {
@@ -81,6 +85,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getOrganization(address) {
     dispatch(getOrganization(address))
+  },
+  resetOrganization() {
+    dispatch(resetOrganization())
   },
 })
 

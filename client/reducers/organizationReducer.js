@@ -39,6 +39,16 @@ const organizationReducer = (state = initialState, action) => {
         organizationLoading: false,
       }
 
+    // resetOrganization
+
+    case actions.ORGANIZATION_RESET_ORGANIZATION:
+      return {
+        ...state,
+        organization: null,
+        organizationError: null,
+        organizationLoading: true,
+      }
+
     default:
       return state
 

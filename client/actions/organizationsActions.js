@@ -27,10 +27,10 @@ export const createOrganizationSuccess = (response) => ({
 
 // deleteOrganization
 
-export const deleteOrganization = (organizationAddress, sender) => ({
+export const deleteOrganization = (organizationAddress, organizationOwner, sender) => ({
   type: actions.ORGANIZATIONS_DELETE_ORGANIZATION,
   payload: organizations.deployed().then(instance => {
-    return instance.deleteOrganization(organizationAddress, { from: sender })
+    return instance.deleteOrganization(organizationAddress, organizationOwner, { from: sender })
   }).then(response => {
     store.dispatch(deleteOrganizationSuccess(response))
   }).catch(error => {

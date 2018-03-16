@@ -8,7 +8,7 @@ const Organizations = ({
   deleteOrganization,
   handleOrganizationName,
   isOrganizationsOwner,
-  organizationName,
+  newOrganizationName,
   organizations,
 }) => (
   <div className={styles.container}>
@@ -21,7 +21,7 @@ const Organizations = ({
       <Create
         createOrganization={createOrganization}
         handleOrganizationName={handleOrganizationName}
-        organizationName={organizationName}
+        newOrganizationName={newOrganizationName}
       />
     </div>
   </div>

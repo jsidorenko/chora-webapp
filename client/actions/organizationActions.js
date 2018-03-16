@@ -24,3 +24,9 @@ export const getOrganizationSuccess = (response) => ({
   type: actions.ORGANIZATION_GET_ORGANIZATION_SUCCESS,
   payload: response,
 })
+
+// resetOrganization
+
+export const resetOrganization = () => ({
+  type: actions.ORGANIZATION_RESET_ORGANIZATION,
+})

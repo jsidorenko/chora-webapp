@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getOrganizationsOwner } from '../actions/accountActions'
+import { getOrganization, resetOrganization } from '../actions/organizationActions'
 import { createOrganization, deleteOrganization, getOrganizations } from '../actions/organizationsActions'
 import Organizations from '../components/Organizations'
 import Loading from '../components/Loading'
@@ -10,6 +11,7 @@ class OrganizationsContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      organizationAddress: null,
       organizationName: '',
       isOrganizationsOwner: null,
     }
@@ -35,6 +37,10 @@ class OrganizationsContainer extends Component {
     if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
       this.setOrganizationsOwner()
     }
+    if (this.state.organizationAddress && this.props.organization) {
+      this.props.deleteOrganization(this.state.organizationAddress, this.props.organization.owner, this.props.accountAddress)
+      this.props.resetOrganization()
+    }
   }
 
   createOrganization() {
@@ -42,12 +48,15 @@ class OrganizationsContainer extends Component {
   }
 
   deleteOrganization(address) {
-    this.props.deleteOrganization(address, this.props.accountAddress)
+    this.props.getOrganization(address)
+    this.setState({
+      organizationAddress: address,
+    })
   }
 
   handleOrganizationName(event) {
     this.setState({
-      organizationName: event.target.value
+      organizationName: event.target.value,
     })
   }
 
@@ -79,6 +88,9 @@ class OrganizationsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+  organization: state.organization.organization,
+  organizationError: state.organization.organizationError,
+  organizationLoading: state.organization.organizationLoading,
   organizations: state.organizations.organizations,
   organizationsError: state.organizations.organizationsError,
   organizationsLoading: state.organizations.organizationsLoading,
@@ -92,14 +104,20 @@ const mapDispatchToProps = dispatch => ({
   createOrganization(organizationName, sender) {
     dispatch(createOrganization(organizationName, sender))
   },
-  deleteOrganization(organizationAddress, sender) {
-    dispatch(deleteOrganization(organizationAddress, sender))
+  deleteOrganization(organizationAddress, organizationOwner, sender) {
+    dispatch(deleteOrganization(organizationAddress, organizationOwner, sender))
+  },
+  getOrganization(address) {
+    dispatch(getOrganization(address))
   },
   getOrganizations() {
     dispatch(getOrganizations())
   },
   getOrganizationsOwner() {
     dispatch(getOrganizationsOwner())
+  },
+  resetOrganization() {
+    dispatch(resetOrganization())
   },
 })
 

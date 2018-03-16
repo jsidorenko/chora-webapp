@@ -2,6 +2,11 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
+  // bounty
+  bountyError: null,
+  bountyLoading: false,
+  bountySuccess: false,
+
   // bounties
   bounties: null,
   bountiesError: null,
@@ -10,6 +15,29 @@ const initialState = {
 
 const bountiesReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // claimBounty
+
+    case actions.BOUNTIES_CLAIM_BOUNTY:
+      return {
+        ...state,
+        bountyError: null,
+        bountySuccess: false,
+      }
+
+    case actions.BOUNTIES_CLAIM_BOUNTY_ERROR:
+      return {
+        ...state,
+        bountyError: action.payload,
+        bountyLoading: false,
+      }
+
+    case actions.BOUNTIES_CLAIM_BOUNTY_SUCCESS:
+      return {
+        ...state,
+        bountyLoading: false,
+        bountySuccess: true,
+      }
 
     // getBounty
 
@@ -37,6 +65,29 @@ const bountiesReducer = (state = initialState, action) => {
           pursuer: action.payload[4],
           tokens: action.payload[5].c[0],
         }],
+      }
+
+    // submitWork
+
+    case actions.BOUNTIES_SUBMIT_WORK:
+      return {
+        ...state,
+        bountyError: null,
+        bountySuccess: false,
+      }
+
+    case actions.BOUNTIES_SUBMIT_WORK_ERROR:
+      return {
+        ...state,
+        bountyError: action.payload,
+        bountyLoading: false,
+      }
+
+    case actions.BOUNTIES_SUBMIT_WORK_SUCCESS:
+      return {
+        ...state,
+        bountyLoading: false,
+        bountySuccess: true,
       }
 
     default:

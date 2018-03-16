@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './List.scss'
 
-const List = ({ addresses, bounties, deleteBounty }) => (
+const List = ({ accountAddress, addresses, bounties, claimBounty, deleteBounty, submitWork }) => (
   <div>
     {!bounties &&
       <span>(no bounties)</span>
@@ -16,12 +16,18 @@ const List = ({ addresses, bounties, deleteBounty }) => (
             <p>owner: {bounty.owner}</p>
             <p>ether: {bounty.ether}</p>
             <p>tokens: {bounty.tokens}</p>
-            <button className={styles.button}>
-              Claim Bounty
-            </button>
-            <button className={styles.button}>
-              Submit Bounty
-            </button>
+            {bounty.pursuer !== '0x0000000000000000000000000000000000000000' ?
+              <p>pursuer: {bounty.pursuer}</p>
+            :
+              <button className={styles.button} onClick={() => claimBounty(addresses[index])}>
+                Claim Bounty
+              </button>
+            }
+            {accountAddress === bounty.pursuer &&
+              <button className={styles.button} onClick={() => submitWork(addresses[index])}>
+                Submit Work
+              </button>
+            }
           </li>
         ))}
       </ul>

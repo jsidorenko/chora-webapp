@@ -3,7 +3,19 @@ import Create from './Bounties/Create'
 import List from './Bounties/List'
 import styles from './Bounties.scss'
 
-const Bounties = ({ addresses, bounties, createBounty, currentView, deleteBounty, handleChange, newBounty, setView }) => (
+const Bounties = ({
+  accountAddress,
+  addresses,
+  bounties,
+  claimBounty,
+  createBounty,
+  currentView,
+  deleteBounty,
+  handleChange,
+  newBounty,
+  setView,
+  submitWork,
+}) => (
   <div className={styles.content}>
     <button className={styles.button} onClick={() => setView('List')}>
       List
@@ -21,9 +33,12 @@ const Bounties = ({ addresses, bounties, createBounty, currentView, deleteBounty
     }
     {currentView === 'List' &&
       <List
+        accountAddress={accountAddress}
         addresses={addresses}
         bounties={bounties}
+        claimBounty={claimBounty}
         deleteBounty={deleteBounty}
+        submitWork={submitWork}
       />
     }
   </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getBounty } from '../../actions/bountiesActions'
+import { claimBounty, getBounty, submitWork } from '../../actions/bountiesActions'
 import { createBounty, deleteBounty } from '../../actions/organizationActions'
 import Bounties from '../../components/Organization/Bounties'
 import Loading from '../../components/Loading'
@@ -19,10 +19,12 @@ class BountiesContainer extends Component {
         name: '',
       }
     }
+    this.claimBounty = this.claimBounty.bind(this)
     this.createBounty = this.createBounty.bind(this)
     this.deleteBounty = this.deleteBounty.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.setView = this.setView.bind(this)
+    this.submitWork = this.submitWork.bind(this)
   }
 
   componentDidMount() {
@@ -41,6 +43,10 @@ class BountiesContainer extends Component {
         loading: false,
       })
     }
+  }
+
+  claimBounty(bountyAddress) {
+    this.props.claimBounty(bountyAddress)
   }
 
   createBounty() {
@@ -88,20 +94,27 @@ class BountiesContainer extends Component {
     })
   }
 
+  submitWork(bountyAddress) {
+    this.props.submitWork(bountyAddress)
+  }
+
   render() {
     if (this.state.loading) {
       return <Loading />
     }
     return (
       <Bounties
+        accountAddress={this.props.accountAddress}
         addresses={this.props.organization.bounties}
         bounties={this.props.bounties}
+        claimBounty={this.claimBounty}
         createBounty={this.createBounty}
         currentView={this.state.currentView}
         deleteBounty={this.deleteBounty}
         newBounty={this.state.newBounty}
         handleChange={this.handleChange}
         setView={this.setView}
+        submitWork={this.submitWork}
       />
     )
   }
@@ -116,6 +129,9 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
+  claimBounty(address) {
+    dispatch(claimBounty(address))
+  },
   createBounty(organizationAddress, newBounty, sender) {
     dispatch(createBounty(organizationAddress, newBounty, sender))
   },
@@ -124,6 +140,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getBounty(address) {
     dispatch(getBounty(address))
+  },
+  submitWork(address) {
+    dispatch(submitWork(address))
   },
 })
 

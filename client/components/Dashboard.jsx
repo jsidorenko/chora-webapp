@@ -7,8 +7,8 @@ const Dashboard = ({
   account,
   accountAddress,
   createOrganization,
+  isOrganizationsOwner,
   organization,
-  selectedOrganization,
   selectOrganiztion,
 }) => (
   <div className={styles.container}>
@@ -16,10 +16,12 @@ const Dashboard = ({
       <Account
         account={account}
         accountAddress={accountAddress}
+        isOrganizationsOwner={isOrganizationsOwner}
       />
       <Organizations
         accountAddress={accountAddress}
         createOrganization={createOrganization}
+        isOrganizationsOwner={isOrganizationsOwner}
         organizations={account.organizations}
         selectOrganiztion={selectOrganiztion}
       />

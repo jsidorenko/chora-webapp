@@ -8,7 +8,11 @@ class DashboardContainer extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      isOrganizationsOwner: null,
+    }
     this.selectOrganiztion = this.selectOrganiztion.bind(this)
+    this.setOrganizationsOwner = this.setOrganizationsOwner.bind(this)
   }
 
   componentDidMount() {
@@ -18,22 +22,35 @@ class DashboardContainer extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
+      this.setOrganizationsOwner()
+    }
+  }
+
   selectOrganiztion(address) {
-    this.props.setOrganization(address)
     this.props.getOrganization(address)
   }
 
+  setOrganizationsOwner() {
+    const account = this.props.accountAddress.toLowerCase()
+    const owner = this.props.organizationsOwner.toLowerCase()
+    this.setState({
+      isOrganizationsOwner: account === owner,
+    })
+  }
+
   render() {
-    if (this.props.accountLoading) {
+    if (this.props.accountLoading || this.props.organizationsOwnerLoading) {
       return <Loading />
     }
     return (
       <Dashboard
         account={this.props.account}
         accountAddress={this.props.accountAddress}
+        isOrganizationsOwner={this.state.isOrganizationsOwner}
         organization={this.props.organization}
         selectOrganiztion={this.selectOrganiztion}
-        selectedOrganization={this.props.selectedOrganization}
       />
     )
   }
@@ -50,7 +67,6 @@ const mapStateToProps = state => ({
   organizationsOwner: state.account.organizationsOwner,
   organizationsOwnerError: state.account.organizationsOwnerError,
   organizationsOwnerLoading: state.account.organizationsOwnerLoading,
-  selectedOrganization: state.organization.selectedOrganization,
 })
 
 const mapDispatchToProps = dispatch => ({

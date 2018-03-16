@@ -32,9 +32,11 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         organization: {
-          name: action.payload[0],
-          owner: action.payload[1],
+          accountBalance: action.payload[0].c[0],
+          balance: action.payload[1].c[0],
           contributors: action.payload[2],
+          name: action.payload[3],
+          owner: action.payload[4],
         },
         organizationLoading: false,
       }

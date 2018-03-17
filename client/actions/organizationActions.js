@@ -48,6 +48,52 @@ export const deleteBountySuccess = (response) => ({
   payload: response,
 })
 
+// getAccount
+
+export const getAccount = (organizationAddress) => ({
+  type: actions.ORGANIZATION_GET_ACCOUNT,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.getAccount()
+  }).then(response => {
+    store.dispatch(getAccountSuccess(response))
+  }).catch(error => {
+    store.dispatch(getAccountError(error))
+  }),
+})
+
+export const getAccountError = (error) => ({
+  type: actions.ORGANIZATION_GET_ACCOUNT_ERROR,
+  payload: error,
+})
+
+export const getAccountSuccess = (response) => ({
+  type: actions.ORGANIZATION_GET_ACCOUNT_SUCCESS,
+  payload: response,
+})
+
+// getContributor
+
+export const getContributor = (organizationAddress, address) => ({
+  type: actions.ORGANIZATION_GET_CONTRIBUTOR,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.getContributor(address)
+  }).then(response => {
+    store.dispatch(getContributorSuccess(response))
+  }).catch(error => {
+    store.dispatch(getContributorError(error))
+  }),
+})
+
+export const getContributorError = (error) => ({
+  type: actions.ORGANIZATION_GET_CONTRIBUTOR_ERROR,
+  payload: error,
+})
+
+export const getContributorSuccess = (response) => ({
+  type: actions.ORGANIZATION_GET_CONTRIBUTOR_SUCCESS,
+  payload: response,
+})
+
 // getOrganization
 
 export const getOrganization = (organizationAddress) => ({

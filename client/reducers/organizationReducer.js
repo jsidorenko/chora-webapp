@@ -2,10 +2,25 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
-  // bounty
-  bountyError: null,
-  bountyLoading: true,
-  bountySuccess: false,
+  // account
+  account: null,
+  accountError: null,
+  accountLoading: true,
+
+  // contributors
+  contributors: null,
+  contributorsError: null,
+  contributorsLoading: true,
+
+  // createBounty
+  createBountyError: null,
+  createBountyLoading: true,
+  createBountySuccess: false,
+
+  // deleteBounty
+  deleteBountyError: null,
+  deleteBountyLoading: true,
+  deleteBountySuccess: false,
 
   // organization
   organization: null,
@@ -22,23 +37,23 @@ const organizationReducer = (state = initialState, action) => {
     case actions.ORGANIZATION_CREATE_BOUNTY:
       return {
         ...state,
-        bountyError: null,
-        bountyLoading: true,
-        bountySuccess: false,
+        createBountyError: null,
+        createBountyLoading: true,
+        createBountySuccess: false,
       }
 
     case actions.ORGANIZATION_CREATE_BOUNTY_ERROR:
       return {
         ...state,
-        bountyError: action.payload,
-        bountyLoading: false,
+        createBountyError: action.payload,
+        createBountyLoading: false,
       }
 
     case actions.ORGANIZATION_CREATE_BOUNTY_SUCCESS:
       return {
         ...state,
-        bountyLoading: false,
-        bountySuccess: action.payload,
+        createBountyLoading: false,
+        createBountySuccess: action.payload,
       }
 
     // deleteBounty
@@ -46,23 +61,76 @@ const organizationReducer = (state = initialState, action) => {
     case actions.ORGANIZATION_DELETE_BOUNTY:
       return {
         ...state,
-        bountyError: null,
-        bountyLoading: true,
-        bountySuccess: false,
+        deleteBountyError: null,
+        deleteBountyLoading: true,
+        deleteBountySuccess: false,
       }
 
     case actions.ORGANIZATION_DELETE_BOUNTY_ERROR:
       return {
         ...state,
-        bountyError: action.payload,
-        bountyLoading: false,
+        deleteBountyError: action.payload,
+        deleteBountyLoading: false,
       }
 
     case actions.ORGANIZATION_DELETE_BOUNTY_SUCCESS:
       return {
         ...state,
-        bountyLoading: false,
-        bountySuccess: action.payload,
+        deleteBountyLoading: false,
+        deleteBountySuccess: action.payload,
+      }
+
+    // getAccount
+
+    case actions.ORGANIZATION_GET_ACCOUNT:
+      return {
+        ...state,
+        accountError: null,
+        accountLoading: true,
+      }
+
+    case actions.ORGANIZATION_GET_ACCOUNT_ERROR:
+      return {
+        ...state,
+        accountError: action.payload,
+        accountLoading: false,
+      }
+
+    case actions.ORGANIZATION_GET_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        account: {
+          bounties: action.payload[0],
+          tokens: action.payload[1].c[0],
+        },
+        accountLoading: false,
+      }
+
+    // getContributor
+
+    case actions.ORGANIZATION_GET_CONTRIBUTOR:
+      return {
+        ...state,
+        contributors: [],
+        contributorsError: null,
+        contributorsLoading: true,
+      }
+
+    case actions.ORGANIZATION_GET_CONTRIBUTOR_ERROR:
+      return {
+        ...state,
+        contributorsError: action.payload,
+        contributorsLoading: false,
+      }
+
+    case actions.ORGANIZATION_GET_CONTRIBUTOR_SUCCESS:
+      return {
+        ...state,
+        contributors: [...state.contributors, {
+          bounties: action.payload[0],
+          tokens: action.payload[1].c[0],
+        }],
+        contributorsLoading: state.organization.contributors.length !== state.contributors.length + 1,
       }
 
     // getOrganization
@@ -85,13 +153,11 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         organization: {
-          accountBounties: action.payload[0],
-          accountTokens: action.payload[1].c[0],
-          bounties: action.payload[2],
-          contributors: action.payload[3],
-          name: action.payload[4],
-          owner: action.payload[5],
-          tokens: action.payload[6].c[0],
+          bounties: action.payload[0],
+          contributors: action.payload[1],
+          name: action.payload[2],
+          owner: action.payload[3],
+          tokens: action.payload[4].c[0],
         },
         organizationLoading: false,
       }

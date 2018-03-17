@@ -1,6 +1,6 @@
 import React from 'react'
 import Account from './Organization/Account'
-import Contributors from './Organization/Contributors'
+import Contributors from '../containers/Organization/Contributors'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
 import Bounties from '../containers/Organization/Bounties'
@@ -38,6 +38,7 @@ const Organization = ({ account, accountAddress, address, currentView, isContrib
       }
       {currentView === 'Contributors' &&
         <Contributors
+          accountAddress={accountAddress}
           address={address}
           organization={organization}
         />

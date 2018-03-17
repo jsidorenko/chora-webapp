@@ -46,7 +46,7 @@ class BountiesContainer extends Component {
   }
 
   claimBounty(bountyAddress) {
-    this.props.claimBounty(bountyAddress)
+    this.props.claimBounty(bountyAddress, this.props.accountAddress)
   }
 
   createBounty() {
@@ -95,7 +95,7 @@ class BountiesContainer extends Component {
   }
 
   submitWork(bountyAddress) {
-    this.props.submitWork(bountyAddress)
+    this.props.submitWork(bountyAddress, this.props.accountAddress)
   }
 
   render() {
@@ -129,8 +129,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  claimBounty(address) {
-    dispatch(claimBounty(address))
+  claimBounty(address, sender) {
+    dispatch(claimBounty(address, sender))
   },
   createBounty(organizationAddress, newBounty, sender) {
     dispatch(createBounty(organizationAddress, newBounty, sender))
@@ -141,8 +141,8 @@ const mapDispatchToProps = dispatch => ({
   getBounty(address) {
     dispatch(getBounty(address))
   },
-  submitWork(address) {
-    dispatch(submitWork(address))
+  submitWork(address, sender) {
+    dispatch(submitWork(address, sender))
   },
 })
 

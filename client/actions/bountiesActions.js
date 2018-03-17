@@ -7,7 +7,7 @@ import { bounty } from '../contracts'
 export const claimBounty = (address, sender) => ({
   type: actions.BOUNTIES_CLAIM_BOUNTY,
   payload: bounty.at(address).then(instance => {
-    return instance.setBountyPursuer(sender, { from: sender })
+    return instance.claimBounty({ from: sender })
   }).then(response => {
     store.dispatch(claimBountySuccess(response))
   }).catch(error => {

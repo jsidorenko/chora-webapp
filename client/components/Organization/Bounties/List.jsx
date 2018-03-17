@@ -11,19 +11,19 @@ const List = ({ accountAddress, addresses, bounties, claimBounty, deleteBounty, 
         {bounties.map((bounty, index) => (
           <li key={addresses[index]}>
             <p>address: {addresses[index]}</p>
-            <p>description: {bounty.description}</p>
-            <p>name: {bounty.name}</p>
             <p>owner: {bounty.owner}</p>
+            <p>pursuer: {bounty.pursuer}</p>
+            <p>name: {bounty.name}</p>
+            <p>description: {bounty.description}</p>
             <p>ether: {bounty.ether}</p>
             <p>tokens: {bounty.tokens}</p>
-            {bounty.pursuer !== '0x0000000000000000000000000000000000000000' ?
-              <p>pursuer: {bounty.pursuer}</p>
-            :
+            <p>workSubmitted: {bounty.workSubmitted ? 'true' : 'false'}</p>
+            {bounty.pursuer === '0x0000000000000000000000000000000000000000' &&
               <button className={styles.button} onClick={() => claimBounty(addresses[index])}>
                 Claim Bounty
               </button>
             }
-            {accountAddress === bounty.pursuer &&
+            {!bounty.workSubmitted && accountAddress.toLowerCase() === bounty.pursuer.toLowerCase() &&
               <button className={styles.button} onClick={() => submitWork(addresses[index])}>
                 Submit Work
               </button>

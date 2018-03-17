@@ -64,6 +64,7 @@ const bountiesReducer = (state = initialState, action) => {
           owner: action.payload[3],
           pursuer: action.payload[4],
           tokens: action.payload[5].c[0],
+          workSubmitted: action.payload[6],
         }],
       }
 

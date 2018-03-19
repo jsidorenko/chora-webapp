@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOrganizationsOwner } from '../actions/accountActions'
 import { getOrganization, resetOrganization } from '../actions/organizationActions'
-import { createOrganization, deleteOrganization, getOrganizations } from '../actions/organizationsActions'
+import { createOrganization, deleteOrganization, getOrganizations, getOrganizationsOwner } from '../actions/organizationsActions'
 import Organizations from '../components/Organizations'
 import Loading from '../components/Loading'
 
@@ -93,9 +92,9 @@ const mapStateToProps = state => ({
   organizations: state.organizations.organizations,
   organizationsError: state.organizations.organizationsError,
   organizationsLoading: state.organizations.organizationsLoading,
-  organizationsOwner: state.account.organizationsOwner,
-  organizationsOwnerError: state.account.organizationsOwnerError,
-  organizationsOwnerLoading: state.account.organizationsOwnerLoading,
+  organizationsOwner: state.organizations.organizationsOwner,
+  organizationsOwnerError: state.organizations.organizationsOwnerError,
+  organizationsOwnerLoading: state.organizations.organizationsOwnerLoading,
 })
 
 

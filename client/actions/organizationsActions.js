@@ -48,6 +48,29 @@ export const deleteOrganizationSuccess = (response) => ({
   payload: response,
 })
 
+// getAccountOrganizations
+
+export const getAccountOrganizations = (account) => ({
+  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS,
+  payload: organizations.deployed().then(instance => (
+    instance.getAccountOrganizations(account)
+  )).then(response => {
+    store.dispatch(getAccountOrganizationsSuccess(response))
+  }).catch(error => {
+    store.dispatch(getAccountOrganizationsError(error))
+  }),
+})
+
+export const getAccountOrganizationsError = (error) => ({
+  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_ERROR,
+  payload: error,
+})
+
+export const getAccountOrganizationsSuccess = (response) => ({
+  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_SUCCESS,
+  payload: response,
+})
+
 // getOrganizations
 
 export const getOrganizations = (address) => ({
@@ -68,5 +91,28 @@ export const getOrganizationsError = (error) => ({
 
 export const getOrganizationsSuccess = (response) => ({
   type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_SUCCESS,
+  payload: response,
+})
+
+// getOrganizationsOwner
+
+export const getOrganizationsOwner = () => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER,
+  payload: organizations.deployed().then(instance => (
+    instance.getOrganizationsOwner()
+  )).then(response => {
+    store.dispatch(getOrganizationsOwnerSuccess(response))
+  }).catch(error => {
+    store.dispatch(getOrganizationsOwnerError(error))
+  }),
+})
+
+export const getOrganizationsOwnerError = (error) => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_ERROR,
+  payload: error,
+})
+
+export const getOrganizationsOwnerSuccess = (response) => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_SUCCESS,
   payload: response,
 })

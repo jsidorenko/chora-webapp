@@ -2,15 +2,30 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
-  // organization
-  organizationError: null,
-  organizationLoading: true,
-  organizationSuccess: false,
+  // accountOrganizations
+  accountOrganizations: null,
+  accountOrganizationsError: null,
+  accountOrganizationsLoading: true,
+
+  // createOrganization
+  createOrganizationError: null,
+  createOrganizationLoading: true,
+  createOrganizationSuccess: false,
+
+  // deleteOrganization
+  deleteOrganizationError: null,
+  deleteOrganizationLoading: true,
+  deleteOrganizationSuccess: false,
 
   // organizations
   organizations: null,
   organizationsError: null,
   organizationsLoading: true,
+
+  // organizationsOwner
+  organizationsOwner: null,
+  organizationsOwnerError: null,
+  organizationsOwnerLoading: true,
 
 }
 
@@ -22,23 +37,23 @@ const organizationsReducer = (state = initialState, action) => {
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION:
       return {
         ...state,
-        organizationError: null,
-        organizationLoading: true,
-        organizationSuccess: false,
+        createOrganizationError: null,
+        createOrganizationLoading: true,
+        createOrganizationSuccess: false,
       }
 
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION_ERROR:
       return {
         ...state,
-        organizationError: action.payload,
-        organizationLoading: false,
+        createOrganizationError: action.payload,
+        createOrganizationLoading: false,
       }
 
     case actions.ORGANIZATIONS_CREATE_ORGANIZATION_SUCCESS:
       return {
         ...state,
-        organizationLoading: false,
-        organizationSuccess: action.payload,
+        createOrganizationLoading: false,
+        createOrganizationSuccess: action.payload,
       }
 
     // deleteOrganization
@@ -46,26 +61,49 @@ const organizationsReducer = (state = initialState, action) => {
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION:
       return {
         ...state,
-        organizationError: null,
-        organizationLoading: true,
-        organizationSuccess: false,
+        deleteOrganizationError: null,
+        deleteOrganizationLoading: true,
+        deleteOrganizationSuccess: false,
       }
 
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION_ERROR:
       return {
         ...state,
-        organizationError: action.payload,
-        organizationLoading: false,
+        deleteOrganizationError: action.payload,
+        deleteOrganizationLoading: false,
       }
 
     case actions.ORGANIZATIONS_DELETE_ORGANIZATION_SUCCESS:
       return {
         ...state,
-        organizationLoading: false,
-        organizationSuccess: action.payload,
+        deleteOrganizationLoading: false,
+        deleteOrganizationSuccess: action.payload,
       }
 
     // getAccountOrganizations
+
+    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS:
+      return {
+        ...state,
+        accountOrganizationsError: null,
+        accountOrganizationsLoading: true,
+      }
+
+    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_ERROR:
+      return {
+        ...state,
+        accountOrganizationsError: action.payload,
+        accountOrganizationsLoading: false,
+      }
+
+    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_SUCCESS:
+      return {
+        ...state,
+        accountOrganizations: action.payload,
+        accountOrganizationsLoading: false,
+      }
+
+    // getOrganizations
 
     case actions.ORGANIZATIONS_GET_ORGANIZATIONS:
       return {
@@ -86,6 +124,29 @@ const organizationsReducer = (state = initialState, action) => {
         ...state,
         organizations: action.payload,
         organizationsLoading: false,
+      }
+
+    // getOrganizationsOwner
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER:
+      return {
+        ...state,
+        organizationsOwnerError: null,
+        organizationsOwnerLoading: true,
+      }
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_ERROR:
+      return {
+        ...state,
+        organizationsOwnerError: action.payload,
+        organizationsOwnerLoading: false,
+      }
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_SUCCESS:
+      return {
+        ...state,
+        organizationsOwner: action.payload,
+        organizationsOwnerLoading: false,
       }
 
     default:

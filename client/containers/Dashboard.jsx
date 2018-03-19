@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOrganizationsOwner, getAccountOrganizations } from '../actions/accountActions'
 import { getOrganization, resetOrganization } from '../actions/organizationActions'
-import { deleteOrganization } from '../actions/organizationsActions'
+import { deleteOrganization, getOrganizationsOwner, getAccountOrganizations } from '../actions/organizationsActions'
 import Dashboard from '../components/Dashboard'
 import Loading from '../components/Loading'
 
@@ -79,15 +78,15 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  accountOrganizations: state.account.accountOrganizations,
-  accountOrganizationsError: state.account.accountOrganizationsError,
-  accountOrganizationsLoading: state.account.accountOrganizationsLoading,
+  accountOrganizations: state.organizations.accountOrganizations,
+  accountOrganizationsError: state.organizations.accountOrganizationsError,
+  accountOrganizationsLoading: state.organizations.accountOrganizationsLoading,
   organization: state.organization.organization,
   organizationError: state.organization.organizationError,
   organizationLoading: state.organization.organizationLoading,
-  organizationsOwner: state.account.organizationsOwner,
-  organizationsOwnerError: state.account.organizationsOwnerError,
-  organizationsOwnerLoading: state.account.organizationsOwnerLoading,
+  organizationsOwner: state.organizations.organizationsOwner,
+  organizationsOwnerError: state.organizations.organizationsOwnerError,
+  organizationsOwnerLoading: state.organizations.organizationsOwnerLoading,
 })
 
 const mapDispatchToProps = dispatch => ({

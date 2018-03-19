@@ -27,6 +27,11 @@ const initialState = {
   organizationError: null,
   organizationLoading: true,
 
+  // transactions
+  transactions: null,
+  transactionsError: null,
+  transactionsLoading: true,
+
 }
 
 const organizationReducer = (state = initialState, action) => {
@@ -160,6 +165,30 @@ const organizationReducer = (state = initialState, action) => {
           tokens: action.payload[4].c[0],
         },
         organizationLoading: false,
+      }
+
+    // getTransactions
+
+    case actions.ORGANIZATION_GET_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: [],
+        transactionsError: null,
+        transactionsLoading: true,
+      }
+
+    case actions.ORGANIZATION_GET_TRANSACTIONS_ERROR:
+      return {
+        ...state,
+        transactionsError: action.payload,
+        transactionsLoading: false,
+      }
+
+    case actions.ORGANIZATION_GET_TRANSACTIONS_SUCCESS:
+      return {
+        ...state,
+        transactions: [...state.transactions, ...action.payload],
+        transactionsLoading: false,
       }
 
     // resetOrganization

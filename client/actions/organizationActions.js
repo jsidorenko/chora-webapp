@@ -117,6 +117,45 @@ export const getOrganizationSuccess = (response) => ({
   payload: response,
 })
 
+// getTransactions
+
+export const getTransactions = (organizationAddress) => ({
+  type: actions.ORGANIZATION_GET_TRANSACTIONS,
+  payload: organization.at(organizationAddress).then(instance => {
+    instance.OrganizationBountyCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.OrganizationBountyDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.OrganizationUpdated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+  }),
+})
+
+export const getTransactionsError = (error) => ({
+  type: actions.ORGANIZATION_GET_TRANSACTIONS_ERROR,
+  payload: error
+})
+
+export const getTransactionsSuccess = (response) => ({
+  type: actions.ORGANIZATION_GET_TRANSACTIONS_SUCCESS,
+  payload: response
+})
+
 // resetOrganization
 
 export const resetOrganization = () => ({

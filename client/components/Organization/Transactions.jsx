@@ -1,28 +1,25 @@
 import React from 'react'
 import styles from './Transactions.scss'
 
-const Transactions = ({ address, organization }) => (
+const Transactions = ({ accountAddress, transactions }) => (
   <div className={styles.content}>
     <h2>Transactions</h2>
     <ul>
-      <li>
-        <p>event: organization created</p>
-        <p>sender: {organization.owner}</p>
-        <p>ether: na</p>
-        <p>tokens: 1</p>
-      </li>
-      <li>
-        <p>event: organization name updated</p>
-        <p>sender: {organization.owner}</p>
-        <p>ether: na</p>
-        <p>tokens: na</p>
-      </li>
-      <li>
-        <p>event: bounty created</p>
-        <p>sender: {organization.owner}</p>
-        <p>ether: na</p>
-        <p>tokens: 1</p>
-      </li>
+      {transactions.map(transaction => (
+        <li key={transaction.blockNumber}>
+          <p>address: {transaction.address}</p>
+          <p>arg.bountyAddress: {transaction.args.bountyAddress}</p>
+          <p>arg.bountyName: {transaction.args.bountyName}</p>
+          <p>arg.sender: {transaction.args.sender}</p>
+          <p>blockHash: {transaction.blockHash}</p>
+          <p>blockNumber: {transaction.blockNumber}</p>
+          <p>event: {transaction.event}</p>
+          <p>logIndex: {transaction.logIndex}</p>
+          <p>transactionHash: {transaction.transactionHash}</p>
+          <p>transactionIndex: {transaction.transactionIndex}</p>
+          <p>type: {transaction.type}</p>
+        </li>
+      ))}
     </ul>
   </div>
 )

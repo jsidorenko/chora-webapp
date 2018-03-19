@@ -4,7 +4,7 @@ import Contributors from '../containers/Organization/Contributors'
 import Overview from './Organization/Overview'
 import Sidebar from './Organization/Sidebar'
 import Bounties from '../containers/Organization/Bounties'
-import Transactions from './Organization/Transactions'
+import Transactions from '../containers/Organization/Transactions'
 import styles from './Organization.scss'
 
 const Organization = ({ account, accountAddress, address, currentView, isContributor, isOwner, organization, setCurrentView }) => (

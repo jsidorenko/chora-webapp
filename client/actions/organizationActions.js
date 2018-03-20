@@ -27,10 +27,10 @@ export const createBountySuccess = (response) => ({
 
 // deleteBounty
 
-export const deleteBounty = (organizationAddress, address, sender) => ({
+export const deleteBounty = (organizationAddress, bountyAddress, sender) => ({
   type: actions.ORGANIZATION_DELETE_BOUNTY,
   payload: organization.at(organizationAddress).then(instance => {
-    return instance.deleteBounty(address, sender, { from: sender })
+    return instance.deleteBounty(bountyAddress, sender, { from: sender })
   }).then(response => {
     store.dispatch(deleteBountySuccess(response))
   }).catch(error => {
@@ -50,10 +50,10 @@ export const deleteBountySuccess = (response) => ({
 
 // getAccount
 
-export const getAccount = (organizationAddress) => ({
+export const getAccount = (organizationAddress, contributorAddress) => ({
   type: actions.ORGANIZATION_GET_ACCOUNT,
   payload: organization.at(organizationAddress).then(instance => {
-    return instance.getAccount()
+    return instance.getContributor(contributorAddress)
   }).then(response => {
     store.dispatch(getAccountSuccess(response))
   }).catch(error => {
@@ -73,10 +73,10 @@ export const getAccountSuccess = (response) => ({
 
 // getContributor
 
-export const getContributor = (organizationAddress, address) => ({
+export const getContributor = (organizationAddress, contributorAddress) => ({
   type: actions.ORGANIZATION_GET_CONTRIBUTOR,
   payload: organization.at(organizationAddress).then(instance => {
-    return instance.getContributor(address)
+    return instance.getContributor(contributorAddress)
   }).then(response => {
     store.dispatch(getContributorSuccess(response))
   }).catch(error => {
@@ -122,14 +122,21 @@ export const getOrganizationSuccess = (response) => ({
 export const getTransactions = (organizationAddress) => ({
   type: actions.ORGANIZATION_GET_TRANSACTIONS,
   payload: organization.at(organizationAddress).then(instance => {
-    instance.OrganizationBountyCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+    instance.BountyCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
       if (error) {
         store.dispatch(getTransactionsError(error))
       } else {
         store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
       }
     })
-    instance.OrganizationBountyDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+    instance.BountyDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.OrganizationCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
       if (error) {
         store.dispatch(getTransactionsError(error))
       } else {

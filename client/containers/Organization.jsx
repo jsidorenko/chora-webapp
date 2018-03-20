@@ -20,7 +20,7 @@ class OrganizationContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.getAccount(this.props.match.params.address)
+    this.props.getAccount(this.props.match.params.address, this.props.accountAddress)
     this.props.getOrganization(this.props.match.params.address)
   }
 
@@ -89,11 +89,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAccount(address) {
-    dispatch(getAccount(address))
+  getAccount(organizationAddress, accountAddress) {
+    dispatch(getAccount(organizationAddress, accountAddress))
   },
-  getOrganization(address) {
-    dispatch(getOrganization(address))
+  getOrganization(organizationAddress) {
+    dispatch(getOrganization(organizationAddress))
   },
   resetOrganization() {
     dispatch(resetOrganization())

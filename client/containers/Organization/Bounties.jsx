@@ -28,8 +28,8 @@ class BountiesContainer extends Component {
   }
 
   componentDidMount() {
-    if (this.props.organization.bounties.length) {
-      this.props.organization.bounties.map(address => this.props.getBounty(address))
+    if (this.props.addresses.length) {
+      this.props.addresses.map(address => this.props.getBounty(address))
     } else {
       this.setState({
         loading: false,
@@ -38,7 +38,7 @@ class BountiesContainer extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.loading && this.props.bounties && this.props.organization.bounties.length === this.props.bounties.length) {
+    if (this.state.loading && this.props.bounties && this.props.addresses.length === this.props.bounties.length) {
       this.setState({
         loading: false,
       })
@@ -54,7 +54,7 @@ class BountiesContainer extends Component {
   }
 
   deleteBounty(address) {
-    const index = this.props.organization.bounties.indexOf(address)
+    const index = this.props.addresses.indexOf(address)
     const bounty = this.props.bounties[index]
     this.props.deleteBounty(this.props.match.params.address, address, bounty.owner, this.props.accountAddress)
   }
@@ -105,7 +105,7 @@ class BountiesContainer extends Component {
     return (
       <Bounties
         accountAddress={this.props.accountAddress}
-        addresses={this.props.organization.bounties}
+        addresses={this.props.addresses}
         bounties={this.props.bounties}
         claimBounty={this.claimBounty}
         createBounty={this.createBounty}

@@ -17,6 +17,7 @@ const List = ({ accountAddress, addresses, bounties, claimBounty, deleteBounty, 
             <p>description: {bounty.description}</p>
             <p>ether: {bounty.ether}</p>
             <p>tokens: {bounty.tokens}</p>
+            <p>workApproved: {bounty.workApproved ? 'true' : 'false'}</p>
             <p>workSubmitted: {bounty.workSubmitted ? 'true' : 'false'}</p>
             {bounty.pursuer === '0x0000000000000000000000000000000000000000' &&
               <button className={styles.button} onClick={() => claimBounty(addresses[index])}>

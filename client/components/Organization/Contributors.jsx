@@ -8,7 +8,9 @@ const Contributors = ({ contributorAddresses, contributors }) => (
       {contributors.map((contributor, index) => (
         <li key={contributorAddresses[index]}>
           <p>account: {contributorAddresses[index]}</p>
+          <p>ballots: {contributor.ballots.join(', ')}</p>
           <p>bounties: {contributor.bounties.join(', ')}</p>
+          <p>projects: {contributor.projects.join(', ')}</p>
           <p>tokens: {contributor.tokens}</p>
         </li>
       ))}

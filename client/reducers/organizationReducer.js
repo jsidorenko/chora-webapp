@@ -221,8 +221,10 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         account: {
-          bounties: action.payload[0],
-          tokens: action.payload[1].c[0],
+          ballots: action.payload[0],
+          bounties: action.payload[1],
+          projects: action.payload[2],
+          tokens: action.payload[3].c[0],
         },
         accountLoading: false,
       }
@@ -248,8 +250,10 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         contributors: [...state.contributors, {
-          bounties: action.payload[0],
-          tokens: action.payload[1].c[0],
+          ballots: action.payload[0],
+          bounties: action.payload[1],
+          projects: action.payload[2],
+          tokens: action.payload[3].c[0],
         }],
         contributorsLoading: state.organization.contributors.length !== state.contributors.length + 1,
       }

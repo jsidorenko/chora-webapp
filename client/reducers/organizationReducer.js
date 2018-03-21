@@ -274,11 +274,13 @@ const organizationReducer = (state = initialState, action) => {
       return {
         ...state,
         organization: {
-          bounties: action.payload[0],
-          contributors: action.payload[1],
-          name: action.payload[2],
-          owner: action.payload[3],
-          tokens: action.payload[4].c[0],
+          ballots: action.payload[0],
+          bounties: action.payload[1],
+          contributors: action.payload[2],
+          name: action.payload[3],
+          owner: action.payload[4],
+          projects: action.payload[5],
+          tokens: action.payload[6].c[0],
         },
         organizationLoading: false,
       }

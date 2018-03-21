@@ -12,15 +12,35 @@ const initialState = {
   contributorsError: null,
   contributorsLoading: true,
 
+  // createBallot
+  createBallotError: null,
+  createBallotLoading: true,
+  createBallotSuccess: false,
+
   // createBounty
   createBountyError: null,
   createBountyLoading: true,
   createBountySuccess: false,
 
+  // createProject
+  createProjectError: null,
+  createProjectLoading: true,
+  createProjectSuccess: false,
+
+  // deleteBallot
+  deleteBallotError: null,
+  deleteBallotLoading: true,
+  deleteBallotSuccess: false,
+
   // deleteBounty
   deleteBountyError: null,
   deleteBountyLoading: true,
   deleteBountySuccess: false,
+
+  // deleteProject
+  deleteProjectError: null,
+  deleteProjectLoading: true,
+  deleteProjectSuccess: false,
 
   // organization
   organization: null,
@@ -36,6 +56,30 @@ const initialState = {
 
 const organizationReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // createBallot
+
+    case actions.ORGANIZATION_CREATE_BALLOT:
+      return {
+        ...state,
+        createBallotError: null,
+        createBallotLoading: true,
+        createBallotSuccess: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_BALLOT_ERROR:
+      return {
+        ...state,
+        createBallotError: action.payload,
+        createBallotLoading: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_BALLOT_SUCCESS:
+      return {
+        ...state,
+        createBallotLoading: false,
+        createBallotSuccess: action.payload,
+      }
 
     // createBounty
 
@@ -61,6 +105,30 @@ const organizationReducer = (state = initialState, action) => {
         createBountySuccess: action.payload,
       }
 
+    // createProject
+
+    case actions.ORGANIZATION_CREATE_PROJECT:
+      return {
+        ...state,
+        createProjectError: null,
+        createProjectLoading: true,
+        createProjectSuccess: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_PROJECT_ERROR:
+      return {
+        ...state,
+        createProjectError: action.payload,
+        createProjectLoading: false,
+      }
+
+    case actions.ORGANIZATION_CREATE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        createProjectLoading: false,
+        createProjectSuccess: action.payload,
+      }
+
     // deleteBounty
 
     case actions.ORGANIZATION_DELETE_BOUNTY:
@@ -83,6 +151,54 @@ const organizationReducer = (state = initialState, action) => {
         ...state,
         deleteBountyLoading: false,
         deleteBountySuccess: action.payload,
+      }
+
+    // deleteBallot
+
+    case actions.ORGANIZATION_DELETE_BALLOT:
+      return {
+        ...state,
+        deleteBallotError: null,
+        deleteBallotLoading: true,
+        deleteBallotSuccess: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_BALLOT_ERROR:
+      return {
+        ...state,
+        deleteBallotError: action.payload,
+        deleteBallotLoading: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_BALLOT_SUCCESS:
+      return {
+        ...state,
+        deleteBallotLoading: false,
+        deleteBallotSuccess: action.payload,
+      }
+
+    // deleteProject
+
+    case actions.ORGANIZATION_DELETE_PROJECT:
+      return {
+        ...state,
+        deleteProjectError: null,
+        deleteProjectLoading: true,
+        deleteProjectSuccess: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_PROJECT_ERROR:
+      return {
+        ...state,
+        deleteProjectError: action.payload,
+        deleteProjectLoading: false,
+      }
+
+    case actions.ORGANIZATION_DELETE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        deleteProjectLoading: false,
+        deleteProjectSuccess: action.payload,
       }
 
     // getAccount

@@ -2,6 +2,29 @@ import store from '../index'
 import * as actions from '../constants/actions'
 import { organization, organizations } from '../contracts'
 
+// createBallot
+
+export const createBallot = (organizationAddress, newBallot, sender) => ({
+  type: actions.ORGANIZATION_CREATE_BALLOT,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.createBallot(newBallot.name, sender, { from: sender })
+  }).then(response => {
+    store.dispatch(createBallotSuccess(response))
+  }).catch(error => {
+    store.dispatch(createBallotError(error))
+  }),
+})
+
+export const createBallotError = (error) => ({
+  type: actions.ORGANIZATION_CREATE_BALLOT_ERROR,
+  payload: error,
+})
+
+export const createBallotSuccess = (response) => ({
+  type: actions.ORGANIZATION_CREATE_BALLOT_SUCCESS,
+  payload: response,
+})
+
 // createBounty
 
 export const createBounty = (organizationAddress, newBounty, sender) => ({
@@ -25,6 +48,52 @@ export const createBountySuccess = (response) => ({
   payload: response,
 })
 
+// createProject
+
+export const createProject = (organizationAddress, newProject, sender) => ({
+  type: actions.ORGANIZATION_CREATE_PROJECT,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.createProject(newProject.name, sender, { from: sender })
+  }).then(response => {
+    store.dispatch(createProjectSuccess(response))
+  }).catch(error => {
+    store.dispatch(createProjectError(error))
+  }),
+})
+
+export const createProjectError = (error) => ({
+  type: actions.ORGANIZATION_CREATE_PROJECT_ERROR,
+  payload: error,
+})
+
+export const createProjectSuccess = (response) => ({
+  type: actions.ORGANIZATION_CREATE_PROJECT_SUCCESS,
+  payload: response,
+})
+
+// deleteBallot
+
+export const deleteBallot = (organizationAddress, bountyAddress, sender) => ({
+  type: actions.ORGANIZATION_DELETE_BALLOT,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.deleteBallot(bountyAddress, sender, { from: sender })
+  }).then(response => {
+    store.dispatch(deleteBallotSuccess(response))
+  }).catch(error => {
+    store.dispatch(deleteBallotError(error))
+  }),
+})
+
+export const deleteBallotError = (error) => ({
+  type: actions.ORGANIZATION_DELETE_BALLOT_ERROR,
+  payload: error,
+})
+
+export const deleteBallotSuccess = (response) => ({
+  type: actions.ORGANIZATION_DELETE_BALLOT_SUCCESS,
+  payload: response,
+})
+
 // deleteBounty
 
 export const deleteBounty = (organizationAddress, bountyAddress, sender) => ({
@@ -45,6 +114,29 @@ export const deleteBountyError = (error) => ({
 
 export const deleteBountySuccess = (response) => ({
   type: actions.ORGANIZATION_DELETE_BOUNTY_SUCCESS,
+  payload: response,
+})
+
+// deleteProject
+
+export const deleteProject = (organizationAddress, bountyAddress, sender) => ({
+  type: actions.ORGANIZATION_DELETE_PROJECT,
+  payload: organization.at(organizationAddress).then(instance => {
+    return instance.deleteProject(bountyAddress, sender, { from: sender })
+  }).then(response => {
+    store.dispatch(deleteProjectSuccess(response))
+  }).catch(error => {
+    store.dispatch(deleteProjectError(error))
+  }),
+})
+
+export const deleteProjectError = (error) => ({
+  type: actions.ORGANIZATION_DELETE_PROJECT_ERROR,
+  payload: error,
+})
+
+export const deleteProjectSuccess = (response) => ({
+  type: actions.ORGANIZATION_DELETE_PROJECT_SUCCESS,
   payload: response,
 })
 
@@ -122,6 +214,20 @@ export const getOrganizationSuccess = (response) => ({
 export const getTransactions = (organizationAddress) => ({
   type: actions.ORGANIZATION_GET_TRANSACTIONS,
   payload: organization.at(organizationAddress).then(instance => {
+    instance.BallotCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.BallotDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
     instance.BountyCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
       if (error) {
         store.dispatch(getTransactionsError(error))
@@ -130,6 +236,20 @@ export const getTransactions = (organizationAddress) => ({
       }
     })
     instance.BountyDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.ProjectCreated({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
+      if (error) {
+        store.dispatch(getTransactionsError(error))
+      } else {
+        store.dispatch(getTransactionsSuccess(result[0] ? result : [result]))
+      }
+    })
+    instance.ProjectDeleted({}, { fromBlock: 0, toBlock: 'pending' }, (error, result) => {
       if (error) {
         store.dispatch(getTransactionsError(error))
       } else {

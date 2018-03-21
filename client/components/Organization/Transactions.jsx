@@ -8,9 +8,6 @@ const Transactions = ({ accountAddress, transactions }) => (
       {transactions.map(transaction => (
         <li key={transaction.blockNumber}>
           <p>address: {transaction.address}</p>
-          <p>arg.bountyAddress: {transaction.args.bountyAddress}</p>
-          <p>arg.bountyName: {transaction.args.bountyName}</p>
-          <p>arg.sender: {transaction.args.sender}</p>
           <p>blockHash: {transaction.blockHash}</p>
           <p>blockNumber: {transaction.blockNumber}</p>
           <p>event: {transaction.event}</p>

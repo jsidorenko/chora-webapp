@@ -30,9 +30,8 @@ const projectsReducer = (state = initialState, action) => {
       return {
         ...state,
         projects: [...state.projects, {
-          description: action.payload[0],
-          name: action.payload[2],
-          owner: action.payload[3],
+          name: action.payload[0],
+          owner: action.payload[1],
         }],
       }
 

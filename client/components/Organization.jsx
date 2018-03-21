@@ -35,21 +35,21 @@ const Organization = ({ account, accountAddress, address, currentView, isContrib
         <Ballots
           accountAddress={accountAddress}
           address={address}
-          addresses={organization.ballots || []}
+          addresses={organization.ballots}
         />
       }
       {currentView === 'Bounties' &&
         <Bounties
           accountAddress={accountAddress}
           address={address}
-          addresses={organization.bounties || []}
+          addresses={organization.bounties}
         />
       }
       {currentView === 'Projects' &&
         <Projects
           accountAddress={accountAddress}
           address={address}
-          addresses={organization.projects || []}
+          addresses={organization.projects}
         />
       }
       {currentView === 'Contributors' &&

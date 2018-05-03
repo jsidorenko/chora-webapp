@@ -10,7 +10,7 @@ const App = ({ accountAddress }) => (
   <div className={styles.container}>
     <Header />
     <Switch>
-      <Route path="/" exact render={() => (
+      <Route exact path="/" render={() => (
         <Dashboard
           accountAddress={accountAddress}
         />

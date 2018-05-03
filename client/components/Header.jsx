@@ -4,15 +4,17 @@ import styles from './Header.scss'
 
 const Header = () => (
   <header className={styles.header}>
-    <img
-      className={styles.title}
-      src="img/title_medium.png"
-    />
-    <div className={styles.controls}>
-      <NavLink className={styles.button} to="/">
+    <NavLink to="/">
+      <img
+        className={styles.title}
+        src="img/title_wb_medium.png"
+      />
+    </NavLink>
+    <div className={styles.links}>
+      <NavLink activeClassName={styles.activeLink} className={styles.link} exact to="/">
         {'Dashboard'}
       </NavLink>
-      <NavLink className={styles.button} to="/organizations">
+      <NavLink activeClassName={styles.activeLink} className={styles.link} to="/organizations">
         {'Organizations'}
       </NavLink>
     </div>

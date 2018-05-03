@@ -17,7 +17,7 @@
   transition: 0.5s;
 
   &:hover {
-    background: #39C;
+    background: rgba(0, 0, 0, 0.95);
     color: #FFF;
     cursor: pointer;
   }
@@ -26,6 +26,6 @@
 
 .linkActive {
   @extend .link;
-  background: #39C;
+  background: rgba(0, 0, 0, 0.95);
   color: #FFF;
 }

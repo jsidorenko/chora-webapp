@@ -23,9 +23,9 @@
 
   &:after {
     animation: spinnerSpin 1s linear infinite;
-    border: 15px solid transparent;
-    border-top-color: #39C;
-    border-bottom-color: #3C9;
+    border: 10px solid transparent;
+    border-top-color: rgba(50, 50, 50, 0.95);
+    border-bottom-color: rgba(0, 0, 0, 0.95);
     position: absolute;
   }
 

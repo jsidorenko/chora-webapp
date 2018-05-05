@@ -7,7 +7,7 @@ const Header = () => (
     <NavLink to="/">
       <img
         className={styles.title}
-        src="img/title_wb_medium.png"
+        src="https://chora.io/img/title_wb_small.png"
       />
     </NavLink>
     <div className={styles.links}>

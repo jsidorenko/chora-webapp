@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { claimBounty, getBounty, submitWork } from '../../actions/bountiesActions'
 import { createBounty, deleteBounty } from '../../actions/organizationActions'
 import Bounties from '../../components/Organization/Bounties'
-import Loading from '../../components/Loading'
+import PageLoader from '../../components/PageLoader'
 
 class BountiesContainer extends Component {
 
@@ -100,7 +100,7 @@ class BountiesContainer extends Component {
 
   render() {
     if (this.state.loading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Bounties

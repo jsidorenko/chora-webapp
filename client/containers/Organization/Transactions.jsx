@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getTransactions } from '../../actions/organizationActions'
+import PageLoader from '../../components/PageLoader'
 import Transactions from '../../components/Organization/Transactions'
-import Loading from '../../components/Loading'
 
 class TransactionsContainer extends Component {
 
@@ -17,7 +17,7 @@ class TransactionsContainer extends Component {
 
   render() {
     if (this.props.transactionsLoading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Transactions

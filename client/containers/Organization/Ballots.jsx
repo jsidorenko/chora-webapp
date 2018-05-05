@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { claimBallot, getBallot } from '../../actions/ballotsActions'
 import { createBallot, deleteBallot } from '../../actions/organizationActions'
 import Ballots from '../../components/Organization/Ballots'
-import Loading from '../../components/Loading'
+import PageLoader from '../../components/PageLoader'
 
 class BallotsContainer extends Component {
 
@@ -72,7 +72,7 @@ class BallotsContainer extends Component {
 
   render() {
     if (this.state.loading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Ballots

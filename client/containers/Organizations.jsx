@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getOrganization, resetOrganization } from '../actions/organizationActions'
 import { createOrganization, deleteOrganization, getOrganizations, getOrganizationsOwner } from '../actions/organizationsActions'
 import Organizations from '../components/Organizations'
-import Loading from '../components/Loading'
+import PageLoader from '../components/PageLoader'
 
 class OrganizationsContainer extends Component {
 
@@ -69,7 +69,7 @@ class OrganizationsContainer extends Component {
 
   render() {
     if (this.props.organizationsLoading || this.props.organizationsOwnerLoading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Organizations

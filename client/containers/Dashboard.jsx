@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getOrganization, resetOrganization } from '../actions/organizationActions'
 import { deleteOrganization, getOrganizationsOwner, getAccountOrganizations } from '../actions/organizationsActions'
 import Dashboard from '../components/Dashboard'
-import Loading from '../components/Loading'
+import PageLoader from '../components/PageLoader'
 
 class DashboardContainer extends Component {
 
@@ -61,7 +61,7 @@ class DashboardContainer extends Component {
 
   render() {
     if (this.props.accountOrganizationsLoading || this.props.organizationsOwnerLoading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Dashboard

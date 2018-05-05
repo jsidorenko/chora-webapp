@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { drizzleConnect } from 'drizzle-react'
 import App from '../components/App'
-import Loading from '../components/Loading'
+import PageError from '../components/PageError'
+import PageLoader from '../components/PageLoader'
 
 class AppContainer extends Component {
 
@@ -19,8 +20,24 @@ class AppContainer extends Component {
   }
 
   render() {
-    if (!this.props.accounts[0]) {
-      return <Loading />
+    if (!this.props.accounts[0] && this.props.web3.status === 'initialized') {
+      return (
+        <PageError
+          message={'Metamask not connected.'}
+        />
+      )
+    }
+    if (!this.props.accounts[0] && this.props.web3.status === 'initialized' && this.props.drizzleStatus && this.props.drizzleStatus.initialized === false) {
+      return (
+        <PageError
+          message={'You must be connected to the Ropsten test network.'}
+        />
+      )
+    }
+    if (!this.props.accounts[0] && this.props.web3.status !== 'initialized') {
+      return (
+        <PageLoader />
+      )
     }
     return (
       <App
@@ -34,10 +51,10 @@ class AppContainer extends Component {
 const mapStateToProps = state => ({
   accounts: state.accounts,
   // contracts: state.contracts,
-  // drizzleStatus: state.drizzleStatus,
+  drizzleStatus: state.drizzleStatus,
   // transactionStack: state.transactionStack,
   // transactions: state.transactions,
-  // web3: state.web3,
+  web3: state.web3,
 })
 
 export default drizzleConnect(AppContainer, mapStateToProps)

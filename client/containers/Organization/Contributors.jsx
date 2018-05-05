@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getContributor } from '../../actions/organizationActions'
 import Contributors from '../../components/Organization/Contributors'
-import Loading from '../../components/Loading'
+import PageLoader from '../../components/PageLoader'
 
 class ContributorsContainer extends Component {
 
@@ -19,7 +19,7 @@ class ContributorsContainer extends Component {
 
   render() {
     if (this.props.contributorsLoading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Contributors

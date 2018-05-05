@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getAccount, getOrganization, resetOrganization } from '../actions/organizationActions'
 import Organization from '../components/Organization'
-import Loading from '../components/Loading'
+import PageLoader from '../components/PageLoader'
 
 class OrganizationContainer extends Component {
 
@@ -61,7 +61,7 @@ class OrganizationContainer extends Component {
 
   render() {
     if (this.props.organizationLoading || this.props.accountLoading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Organization

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { claimProject, getProject } from '../../actions/projectsActions'
 import { createProject, deleteProject } from '../../actions/organizationActions'
+import PageLoader from '../../components/PageLoader'
 import Projects from '../../components/Organization/Projects'
-import Loading from '../../components/Loading'
 
 class ProjectsContainer extends Component {
 
@@ -72,7 +72,7 @@ class ProjectsContainer extends Component {
 
   render() {
     if (this.state.loading) {
-      return <Loading />
+      return <PageLoader />
     }
     return (
       <Projects

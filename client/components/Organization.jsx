@@ -20,12 +20,12 @@ const Organization = ({
   setCurrentView,
 }) => (
   <div className={styles.container}>
+    <Sidebar
+      currentView={currentView}
+      organization={organization}
+      setCurrentView={setCurrentView}
+    />
     <div className={styles.dashboard}>
-      <Sidebar
-        currentView={currentView}
-        organization={organization}
-        setCurrentView={setCurrentView}
-      />
       {currentView === 'Overview' &&
         <Overview
           address={address}

@@ -18,13 +18,13 @@ const Account = ({
       {`isContributor: ${isContributor ? 'true' : 'false'}`}
     </p>
     <p>
-      {`ballots: ${account.ballots.join(', ')}`}
+      {`ballots: ${account.ballots.length ? account.ballots.join(', ') : '(no ballots)'}`}
     </p>
     <p>
-      {`bounties: ${account.bounties.join(', ')}`}
+      {`bounties: ${account.bounties.length ? account.bounties.join(', ') : '(no bounties)'}`}
     </p>
     <p>
-      {`projects: ${account.projects.join(', ')}`}
+      {`projects: ${account.projects.length ? account.projects.join(', ') : '(no projects)'}`}
     </p>
     <p>
       {`tokens: ${account.tokens}`}

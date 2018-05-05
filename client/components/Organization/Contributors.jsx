@@ -16,13 +16,13 @@ const Contributors = ({
             {`address: ${contributorAddresses[index]}`}
           </p>
           <p>
-            {`ballots: ${contributor.ballots.join(', ')}`}
+            {`ballots: ${contributor.ballots.length ? contributor.ballots.join(', ') : '(no ballots)'}`}
           </p>
           <p>
-            {`bounties: ${contributor.bounties.join(', ')}`}
+            {`bounties: ${contributor.bounties.length ? contributor.bounties.join(', ') : '(no bounties)'}`}
           </p>
           <p>
-            {`projects: ${contributor.projects.join(', ')}`}
+            {`projects: ${contributor.projects.length ? contributor.projects.join(', ') : '(no projects)'}`}
           </p>
           <p>
             {`tokens: ${contributor.tokens}`}

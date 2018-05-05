@@ -1,7 +1,7 @@
 @import '../stylesheets/animations.scss';
 
 .container {
-  margin-top: 80px;
+  margin-top: calc(80px + 1rem);
   min-height: calc(100vh - 80px);
 }
 

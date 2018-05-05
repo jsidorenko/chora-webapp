@@ -1,20 +1,41 @@
 import React from 'react'
 import styles from './Transactions.scss'
 
-const Transactions = ({ accountAddress, transactions }) => (
+const Transactions = ({
+  accountAddress,
+  transactions,
+}) => (
   <div className={styles.content}>
-    <h2>Transactions</h2>
+    <h2>
+      {'Transactions'}
+    </h2>
     <ul>
       {transactions.map(transaction => (
         <li key={transaction.blockNumber}>
-          <p>address: {transaction.address}</p>
-          <p>blockHash: {transaction.blockHash}</p>
-          <p>blockNumber: {transaction.blockNumber}</p>
-          <p>event: {transaction.event}</p>
-          <p>logIndex: {transaction.logIndex}</p>
-          <p>transactionHash: {transaction.transactionHash}</p>
-          <p>transactionIndex: {transaction.transactionIndex}</p>
-          <p>type: {transaction.type}</p>
+          <p>
+            {`address: ${transaction.address}`}
+          </p>
+          <p>
+            {`blockHash: ${transaction.blockHash}`}
+          </p>
+          <p>
+            {`blockNumber: ${transaction.blockNumber}`}
+          </p>
+          <p>
+            {`event: ${transaction.event}`}
+          </p>
+          <p>
+            {`logIndex: ${transaction.logIndex}`}
+          </p>
+          <p>
+            {`transactionHash: ${transaction.transactionHash}`}
+          </p>
+          <p>
+            {`transactionIndex: ${transaction.transactionIndex}`}
+          </p>
+          <p>
+            {`type: ${transaction.type}`}
+          </p>
         </li>
       ))}
     </ul>

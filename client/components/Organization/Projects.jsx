@@ -16,12 +16,14 @@ const Projects = ({
 }) => (
   <div className={styles.content}>
     <button className={styles.button} onClick={() => setView('List')}>
-      List
+      {'List'}
     </button>
     <button className={styles.button} onClick={() => setView('Create')}>
-      Create
+      {'Create'}
     </button>
-    <h2>Projects</h2>
+    <h2>
+      {'Projects'}
+    </h2>
     {currentView === 'Create' &&
       <Create
         createProject={createProject}

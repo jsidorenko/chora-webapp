@@ -9,7 +9,16 @@ import Sidebar from './Organization/Sidebar'
 import Transactions from '../containers/Organization/Transactions'
 import styles from './Organization.scss'
 
-const Organization = ({ account, accountAddress, address, currentView, isContributor, isOwner, organization, setCurrentView }) => (
+const Organization = ({
+  account,
+  accountAddress,
+  address,
+  currentView,
+  isContributor,
+  isOwner,
+  organization,
+  setCurrentView,
+}) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Sidebar

@@ -1,11 +1,16 @@
 import React from 'react'
 import styles from './Create.scss'
 
-const Create = ({ createProject, handleChange, newProject, setView }) => (
+const Create = ({
+  createProject,
+  handleChange,
+  newProject,
+  setView,
+}) => (
   <div>
     <div className={styles.field}>
       <span className={styles.label}>
-        name:
+        {'name:'}
       </span>
       <input
         className={styles.input}

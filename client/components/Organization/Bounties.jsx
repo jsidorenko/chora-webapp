@@ -18,12 +18,14 @@ const Bounties = ({
 }) => (
   <div className={styles.content}>
     <button className={styles.button} onClick={() => setView('List')}>
-      List
+      {'List'}
     </button>
     <button className={styles.button} onClick={() => setView('Create')}>
-      Create
+      {'Create'}
     </button>
-    <h2>Bounties</h2>
+    <h2>
+      {'Bounties'}
+    </h2>
     {currentView === 'Create' &&
       <Create
         createBounty={createBounty}

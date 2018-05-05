@@ -7,7 +7,9 @@ const Create = ({
   newOrganizationName,
 }) => (
   <div className={styles.container}>
-    <h2>Create Organization</h2>
+    <h2>
+      {'Create Organization'}
+    </h2>
     <input
       className={styles.input}
       onChange={handleOrganizationName}

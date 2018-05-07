@@ -16,9 +16,24 @@
 
 }
 
-.input {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 0.5rem;
-  margin-right: 1rem;
+.field {
+
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 0.5rem;
+    max-width: 200px;
+    width: 100%;
+  }
+
+  input::placeholder {
+    font-style: italic;
+  }
+
+}
+
+.buttons {
+  padding: 1rem 0;
 }

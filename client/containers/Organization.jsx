@@ -60,7 +60,7 @@ class OrganizationContainer extends Component {
   }
 
   render() {
-    if (this.props.organizationLoading || this.props.accountLoading) {
+    if (this.props.organizationLoading || this.props.organization === null || this.props.accountLoading) {
       return <PageLoader />
     }
     return (

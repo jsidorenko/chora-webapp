@@ -10,14 +10,19 @@ const Create = ({
     <h2>
       {'Create Organization'}
     </h2>
-    <input
-      className={styles.input}
-      onChange={handleChangeName}
-      value={organizationName}
-    />
-    <button className={styles.button} onClick={createOrganization}>
-      {'Create Organization'}
-    </button>
+    <div className={styles.field}>
+      <input
+        className={styles.input}
+        onChange={handleChangeName}
+        placeholder="organization name"
+        value={organizationName}
+      />
+    </div>
+    <div className={styles.buttons}>
+      <button className={styles.button} onClick={createOrganization}>
+        {'Create Organization'}
+      </button>
+    </div>
   </div>
 )
 

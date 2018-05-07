@@ -2,11 +2,6 @@ import * as actions from '../constants/actions'
 
 const initialState = {
 
-  // accountOrganizations
-  accountOrganizations: null,
-  accountOrganizationsError: null,
-  accountOrganizationsLoading: true,
-
   // createOrganization
   createOrganizationError: null,
   createOrganizationLoading: true,
@@ -22,10 +17,20 @@ const initialState = {
   organizationsError: null,
   organizationsLoading: true,
 
+  // organizationsContributor
+  organizationsContributor: null,
+  organizationsContributorError: null,
+  organizationsContributorLoading: true,
+
   // organizationsOwner
   organizationsOwner: null,
   organizationsOwnerError: null,
   organizationsOwnerLoading: true,
+
+  // owner
+  owner: null,
+  ownerError: null,
+  ownerLoading: true,
 
 }
 
@@ -80,27 +85,50 @@ const organizationsReducer = (state = initialState, action) => {
         deleteOrganizationSuccess: action.payload,
       }
 
-    // getAccountOrganizations
+    // getOrganizationsContributor
 
-    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR:
       return {
         ...state,
-        accountOrganizationsError: null,
-        accountOrganizationsLoading: true,
+        organizationsContributorError: null,
+        organizationsContributorLoading: true,
       }
 
-    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_ERROR:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR_ERROR:
       return {
         ...state,
-        accountOrganizationsError: action.payload,
-        accountOrganizationsLoading: false,
+        organizationsContributorError: action.payload,
+        organizationsContributorLoading: false,
       }
 
-    case actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_SUCCESS:
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR_SUCCESS:
       return {
         ...state,
-        accountOrganizations: action.payload,
-        accountOrganizationsLoading: false,
+        organizationsContributor: action.payload,
+        organizationsContributorLoading: false,
+      }
+
+    // getOrganizationsOwner
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER:
+      return {
+        ...state,
+        organizationsOwnerError: null,
+        organizationsOwnerLoading: true,
+      }
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_ERROR:
+      return {
+        ...state,
+        organizationsOwnerError: action.payload,
+        organizationsOwnerLoading: false,
+      }
+
+    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_SUCCESS:
+      return {
+        ...state,
+        organizationsOwner: action.payload,
+        organizationsOwnerLoading: false,
       }
 
     // getOrganizations
@@ -126,27 +154,27 @@ const organizationsReducer = (state = initialState, action) => {
         organizationsLoading: false,
       }
 
-    // getOrganizationsOwner
+    // getOwner
 
-    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER:
+    case actions.ORGANIZATIONS_GET_OWNER:
       return {
         ...state,
-        organizationsOwnerError: null,
-        organizationsOwnerLoading: true,
+        ownerError: null,
+        ownerLoading: true,
       }
 
-    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_ERROR:
+    case actions.ORGANIZATIONS_GET_OWNER_ERROR:
       return {
         ...state,
-        organizationsOwnerError: action.payload,
-        organizationsOwnerLoading: false,
+        ownerError: action.payload,
+        ownerLoading: false,
       }
 
-    case actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_SUCCESS:
+    case actions.ORGANIZATIONS_GET_OWNER_SUCCESS:
       return {
         ...state,
-        organizationsOwner: action.payload,
-        organizationsOwnerLoading: false,
+        owner: action.payload,
+        ownerLoading: false,
       }
 
     default:

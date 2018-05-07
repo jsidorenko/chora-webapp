@@ -48,29 +48,6 @@ export const deleteOrganizationSuccess = (response) => ({
   payload: response,
 })
 
-// getAccountOrganizations
-
-export const getAccountOrganizations = (account) => ({
-  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS,
-  payload: organizations.deployed().then(instance => (
-    instance.getAccountOrganizations(account)
-  )).then(response => {
-    store.dispatch(getAccountOrganizationsSuccess(response))
-  }).catch(error => {
-    store.dispatch(getAccountOrganizationsError(error))
-  }),
-})
-
-export const getAccountOrganizationsError = (error) => ({
-  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_ERROR,
-  payload: error,
-})
-
-export const getAccountOrganizationsSuccess = (response) => ({
-  type: actions.ORGANIZATIONS_GET_ACCOUNT_ORGANIZATIONS_SUCCESS,
-  payload: response,
-})
-
 // getOrganizations
 
 export const getOrganizations = (address) => ({
@@ -94,12 +71,35 @@ export const getOrganizationsSuccess = (response) => ({
   payload: response,
 })
 
+// getOrganizationsContributor
+
+export const getOrganizationsContributor = (account) => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR,
+  payload: organizations.deployed().then(instance => (
+    instance.getOrganizationsContributor(account)
+  )).then(response => {
+    store.dispatch(getOrganizationsContributorSuccess(response))
+  }).catch(error => {
+    store.dispatch(getOrganizationsContributorError(error))
+  }),
+})
+
+export const getOrganizationsContributorError = (error) => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR_ERROR,
+  payload: error,
+})
+
+export const getOrganizationsContributorSuccess = (response) => ({
+  type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_CONTRIBUTOR_SUCCESS,
+  payload: response,
+})
+
 // getOrganizationsOwner
 
-export const getOrganizationsOwner = () => ({
+export const getOrganizationsOwner = (account) => ({
   type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER,
   payload: organizations.deployed().then(instance => (
-    instance.getOrganizationsOwner()
+    instance.getOrganizationsOwner(account)
   )).then(response => {
     store.dispatch(getOrganizationsOwnerSuccess(response))
   }).catch(error => {
@@ -114,5 +114,28 @@ export const getOrganizationsOwnerError = (error) => ({
 
 export const getOrganizationsOwnerSuccess = (response) => ({
   type: actions.ORGANIZATIONS_GET_ORGANIZATIONS_OWNER_SUCCESS,
+  payload: response,
+})
+
+// getOwner
+
+export const getOwner = () => ({
+  type: actions.ORGANIZATIONS_GET_OWNER,
+  payload: organizations.deployed().then(instance => (
+    instance.getOwner()
+  )).then(response => {
+    store.dispatch(getOwnerSuccess(response))
+  }).catch(error => {
+    store.dispatch(getOwnerError(error))
+  }),
+})
+
+export const getOwnerError = (error) => ({
+  type: actions.ORGANIZATIONS_GET_OWNER_ERROR,
+  payload: error,
+})
+
+export const getOwnerSuccess = (response) => ({
+  type: actions.ORGANIZATIONS_GET_OWNER_SUCCESS,
   payload: response,
 })

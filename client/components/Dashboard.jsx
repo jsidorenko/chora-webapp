@@ -5,17 +5,19 @@ import styles from './Dashboard.scss'
 
 const Dashboard = ({
   accountAddress,
-  accountOrganizations,
-  isOrganizationsOwner,
+  organizationsContributor,
+  organizationsOwner,
+  isOwner,
 }) => (
   <div className={styles.container}>
     <div className={styles.dashboard}>
       <Account
         accountAddress={accountAddress}
-        isOrganizationsOwner={isOrganizationsOwner}
+        isOwner={isOwner}
       />
       <Organizations
-        accountOrganizations={accountOrganizations}
+        organizationsContributor={organizationsContributor}
+        organizationsOwner={organizationsOwner}
       />
     </div>
   </div>

@@ -20,11 +20,11 @@ organization.setProvider(web3.currentProvider)
 project.setProvider(web3.currentProvider)
 
 // set contract defaults(s)
-ballot.defaults({ gas: 4000000 })
-bounty.defaults({ gas: 4000000 })
-organization.defaults({ gas: 4000000 })
-organizations.defaults({ gas: 4000000 })
-project.defaults({ gas: 4000000 })
+ballot.defaults({ gas: 5000000 })
+bounty.defaults({ gas: 5000000 })
+organization.defaults({ gas: 5000000 })
+organizations.defaults({ gas: 5000000 })
+project.defaults({ gas: 5000000 })
 
 // export contract instance(s)
 export {

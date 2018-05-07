@@ -3,7 +3,7 @@ import styles from './Account.scss'
 
 const Account = ({
   accountAddress,
-  isOrganizationsOwner,
+  isOwner,
 }) => (
   <div className={styles.container}>
     <h2>
@@ -13,7 +13,7 @@ const Account = ({
       {accountAddress}
     </p>
     <p>
-      {`isOrganizationsOwner: ${isOrganizationsOwner ? 'true' : 'false'}`}
+      {`isOwner: ${isOwner ? 'true' : 'false'}`}
     </p>
   </div>
 )

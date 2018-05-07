@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getOrganizationsOwner, getAccountOrganizations } from '../actions/organizationsActions'
+import { getOrganizationsContributor, getOrganizationsOwner, getOwner } from '../actions/organizationsActions'
 import Dashboard from '../components/Dashboard'
 import PageLoader from '../components/PageLoader'
 
@@ -9,45 +9,49 @@ class DashboardContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOrganizationsOwner: null,
+      isOwner: null,
     }
   }
 
   componentDidMount() {
-    if (!this.props.organizations) {
-      this.props.getAccountOrganizations(this.props.accountAddress)
+    if (!this.props.organizationsContributor) {
+      this.props.getOrganizationsContributor(this.props.accountAddress)
     }
     if (!this.props.organizationsOwner) {
-      this.props.getOrganizationsOwner()
+      this.props.getOrganizationsOwner(this.props.accountAddress)
     }
-    if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
-      this.setOrganizationsOwner()
+    if (!this.props.organizationsOwner) {
+      this.props.getOwner()
+    }
+    if (this.state.isOwner === null && !this.props.ownerLoading && this.props.owner) {
+      this.setOwner()
     }
   }
 
   componentDidUpdate() {
-    if (this.state.isOrganizationsOwner === null && !this.props.organizationsOwnerLoading && this.props.organizationsOwner) {
-      this.setOrganizationsOwner()
+    if (this.state.isOwner === null && !this.props.ownerLoading && this.props.owner) {
+      this.setOwner()
     }
   }
 
-  setOrganizationsOwner() {
+  setOwner() {
     const account = this.props.accountAddress.toLowerCase()
-    const owner = this.props.organizationsOwner.toLowerCase()
+    const owner = this.props.owner.toLowerCase()
     this.setState({
-      isOrganizationsOwner: account === owner,
+      isOwner: account === owner,
     })
   }
 
   render() {
-    if (this.props.accountOrganizationsLoading || this.props.organizationsOwnerLoading) {
+    if (this.props.organizationsContributorLoading || this.props.organizationsOwnerLoading || this.props.ownerLoading) {
       return <PageLoader />
     }
     return (
       <Dashboard
         accountAddress={this.props.accountAddress}
-        accountOrganizations={this.props.accountOrganizations}
-        isOrganizationsOwner={this.state.isOrganizationsOwner}
+        organizationsContributor={this.props.organizationsContributor}
+        organizationsOwner={this.props.organizationsOwner}
+        isOwner={this.state.isOwner}
       />
     )
   }
@@ -55,20 +59,26 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  accountOrganizations: state.organizations.accountOrganizations,
-  accountOrganizationsError: state.organizations.accountOrganizationsError,
-  accountOrganizationsLoading: state.organizations.accountOrganizationsLoading,
+  organizationsContributor: state.organizations.organizationsContributor,
+  organizationsContributorError: state.organizations.organizationsContributorError,
+  organizationsContributorLoading: state.organizations.organizationsContributorLoading,
   organizationsOwner: state.organizations.organizationsOwner,
   organizationsOwnerError: state.organizations.organizationsOwnerError,
   organizationsOwnerLoading: state.organizations.organizationsOwnerLoading,
+  owner: state.organizations.owner,
+  ownerError: state.organizations.ownerError,
+  ownerLoading: state.organizations.ownerLoading,
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAccountOrganizations(account) {
-    dispatch(getAccountOrganizations(account))
+  getOrganizationsContributor(account) {
+    dispatch(getOrganizationsContributor(account))
   },
-  getOrganizationsOwner() {
-    dispatch(getOrganizationsOwner())
+  getOrganizationsOwner(account) {
+    dispatch(getOrganizationsOwner(account))
+  },
+  getOwner() {
+    dispatch(getOwner())
   },
 })
 

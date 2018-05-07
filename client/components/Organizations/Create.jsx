@@ -3,8 +3,8 @@ import styles from './Create.scss'
 
 const Create = ({
   createOrganization,
-  handleOrganizationName,
-  newOrganizationName,
+  handleChangeName,
+  organizationName,
 }) => (
   <div className={styles.container}>
     <h2>
@@ -12,8 +12,8 @@ const Create = ({
     </h2>
     <input
       className={styles.input}
-      onChange={handleOrganizationName}
-      value={newOrganizationName}
+      onChange={handleChangeName}
+      value={organizationName}
     />
     <button className={styles.button} onClick={createOrganization}>
       {'Create Organization'}

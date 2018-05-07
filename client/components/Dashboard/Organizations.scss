@@ -19,7 +19,7 @@
 .organization {
   color: rgba(0, 0, 0, 0.95);
   display: inline-block;
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
   opacity: 1;
   transition: 0.5s;
 
@@ -28,18 +28,4 @@
     opacity: 0.8;
   }
 
-}
-
-.input {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 0.5rem;
-  margin-right: 1rem;
-}
-
-.button {
-  font-size: 0.75rem;
-  margin: 0 0.5rem;
-  padding: 0.25rem;
-  width: 1.5rem;
 }

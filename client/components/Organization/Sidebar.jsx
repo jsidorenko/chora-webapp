@@ -6,6 +6,7 @@ const Sidebar = ({
   accountError,
   accountLoading,
   currentView,
+  isOwner,
   setCurrentView,
 }) => (
   <div className={styles.sidebar}>
@@ -31,6 +32,11 @@ const Sidebar = ({
       <li className={currentView === 'Transactions' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Transactions')}>
         {'Transactions'}
       </li>
+      {isOwner &&
+        <li className={currentView === 'Settings' ? styles.linkActive : styles.link} onClick={() => setCurrentView('Settings')}>
+          {'Settings'}
+        </li>
+      }
     </ul>
   </div>
 )

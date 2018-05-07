@@ -30,7 +30,7 @@ class AppContainer extends Component {
     if (!this.props.accounts[0] && this.props.web3.status === 'initialized' && this.props.drizzleStatus && this.props.drizzleStatus.initialized === false) {
       return (
         <PageError
-          message={'You must be connected to the Ropsten test network.'}
+          message={'You must be connected to the Rinkeby test network.'}
         />
       )
     }

@@ -4,8 +4,6 @@ import styles from './Organizations.scss'
 
 const Organizations = ({
   accountOrganizations,
-  deleteOrganization,
-  isOrganizationsOwner,
 }) => (
   <div className={styles.container}>
     <h2>
@@ -14,11 +12,6 @@ const Organizations = ({
     <ul>
       {accountOrganizations && accountOrganizations.map(organization => (
         <li key={organization}>
-          {isOrganizationsOwner &&
-            <button className={styles.button} onClick={() => deleteOrganization(organization)}>
-              {'X'}
-            </button>
-          }
           <NavLink className={styles.organization} to={`/${organization}`}>
             {organization}
           </NavLink>

@@ -6,6 +6,7 @@ import Contributors from '../containers/Organization/Contributors'
 import Overview from './Organization/Overview'
 import Projects from '../containers/Organization/Projects'
 import Sidebar from './Organization/Sidebar'
+import Settings from '../containers/Organization/Settings'
 import Transactions from '../containers/Organization/Transactions'
 import styles from './Organization.scss'
 
@@ -22,6 +23,7 @@ const Organization = ({
   <div className={styles.container}>
     <Sidebar
       currentView={currentView}
+      isOwner={isOwner}
       organization={organization}
       setCurrentView={setCurrentView}
     />
@@ -71,6 +73,12 @@ const Organization = ({
       {currentView === 'Transactions' &&
         <Transactions
           address={address}
+          organization={organization}
+        />
+      }
+      {isOwner && currentView === 'Settings' &&
+        <Settings
+          accountAddress={accountAddress}
           organization={organization}
         />
       }
